@@ -1,0 +1,115 @@
+---
+- name: 7. 연동 interface no shutdown
+  hosts: juniper
+  roles:
+  - Juniper.junos
+  connection: local
+  gather_facts: no
+
+  tasks:
+
+  - name: 7. 연동 interface no shutdown
+    shell: cat ./opt/temp.xml
+
+
+################### Delete Interface Disable #########################
+
+  - name: Delete Interface Disable
+    junos_install_config: host=192.168.0.32 user=juniper port=22
+     diffs_file="./opt/7th_interface_no_shutdown/get/delete_interface_disable.diff"
+     logfile="./opt/7th_interface_no_shutdown/get/interface_noshut.log"
+     file="./opt/7th_interface_no_shutdown/set/interface_disable.xml"
+     replace=yes
+
+  - name: Delete Interface Disable
+    shell: cat ./opt/7th_interface_no_shutdown/get/delete_interface_disable.diff
+    register: out
+  - name: Diff
+    debug: var=out.stdout_lines
+
+  - name: COMMIT
+    tags: commit
+    junos_commit: host=192.168.0.32 user=juniper port=22
+     logfile="./opt/7th_interface_no_shutdown/get/interface_noshut.log"
+
+
+ ################ SHOW Interface Descriptions #####################
+
+  - name: SHOW Interface Descriptions
+    junos_cli:
+      host: 192.168.0.32
+      user: juniper
+      cli: show interfaces descriptions
+      format: xml
+      dest: ./opt/7th_interface_no_shutdown/get/show_interfaces_descriptions.xml
+      logfile: ./opt/7th_interface_no_shutdown/get/interface_noshut.log
+  - name: SHOW Interface Descriptions
+    shell: cat ./opt/7th_interface_no_shutdown/get/show_interfaces_descriptions.xml
+    register: out
+  - name: SHOW Interface Descriptions
+    debug: var=out.stdout_lines
+
+
+  ################ Ping Test #####################    
+
+  - name: Ping 10.1.1.1
+    junos_ping:
+      host=192.168.0.32
+      user=juniper
+      dest_ip=10.1.1.1
+      acceptable_packet_loss=1
+    register: junos
+  - debug: var=junos
+
+  - name: Ping 10.1.2.1
+    junos_ping:
+      host=192.168.0.32
+      user=juniper
+      dest_ip=10.1.2.1
+      acceptable_packet_loss=1
+    register: junos
+  - debug: var=junos
+
+  - name: Ping 30.1.1.2
+    junos_ping:
+      host=192.168.0.32
+      user=juniper
+      dest_ip=30.1.1.2
+      acceptable_packet_loss=1
+    register: junos
+  - debug: var=junos
+
+  - name: Ping 30.1.2.2
+    junos_ping:
+      host=192.168.0.32
+      user=juniper
+      dest_ip=30.1.2.2
+      acceptable_packet_loss=1
+    register: junos
+  - debug: var=junos
+
+ ###################### 계속 진행 or 롤백  #####################
+
+  - name: Confirm for continue to next step
+    pause: prompt="계속 진행 하시겠습니까? (y/n)"
+    register: yn
+
+  - name: Continue
+    debug: msg="다음 단계로 진행 하겠습니다"
+    when: yn.user_input == 'y'
+    run_once: true
+
+  - name: Rollback
+    junos_install_config: host=192.168.0.32 user=juniper port=22
+     file="./opt/1st_check/set/Backup_config.xml"
+     overwrite=yes
+    when: yn.user_input == 'n'
+
+  - name: COMMMIT
+    tags: commit
+    junos_commit: host=192.168.0.32 user=juniper port=22
+    when: yn.user_input == 'n'
+
+  - name: 원상복구가 되었으며 시나리오를 종료 합니다.
+    meta: end_play
+    when: yn.user_input == 'n'

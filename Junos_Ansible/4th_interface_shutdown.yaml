@@ -1,0 +1,76 @@
+---
+- name: 4. 연동 Interface Shutdown
+  hosts: juniper
+  roles:
+  - Juniper.junos
+  connection: local
+  gather_facts: no
+
+  tasks:
+
+   ################ Set Interface Disable #####################
+  - name: 4. 연동 Interface Shutdown
+    shell: cat ./opt/temp.xml
+
+  - name: Set Interface Disable
+    junos_install_config: host=192.168.0.32 user=juniper port=22
+     diffs_file="./opt/4th_interface_shutdown/get/interface_disable.diff"
+     logfile="./opt/4th_interface_shutdown/get/interface_disable.log"
+     file="./opt/4th_interface_shutdown/set/interface_disable.xml"
+     replace=yes
+
+  - name: Set Interface Disable
+    shell: cat ./opt/4th_interface_shutdown/get/interface_disable.diff
+    register: out
+  - name: Diff
+    debug: var=out.stdout_lines
+
+  - name: COMMIT
+    tags: commit
+    junos_commit: host=192.168.0.32 user=juniper port=22
+     comment="commit of confirmation"
+     logfile="./opt/4th_interface_shutdown/get/interface_disable.log"
+
+
+##################  Show Interfaces Descriptions  ##################
+
+  - name: Show Interfaces Descriptions
+    junos_cli:
+      host: 192.168.0.32
+      user: juniper
+      cli: show interfaces descriptions
+      format: xml
+      dest: ./opt/4th_interface_shutdown/get/show_interfaces.xml
+      logfile: ./opt/4th_interface_shutdown/get/interface_disable.log
+  - name: Show Interfaces Descriptions
+    shell: cat ./opt/4th_interface_shutdown/get/show_interfaces.xml
+    register: out
+  - name: Show Interfaces Descriptions
+    debug: var=out.stdout_lines
+
+
+ ###################### 계속 진행 or 롤백  #####################
+
+  - name: Confirm for continue to next step
+    pause: prompt="계속 진행 하시겠습니까? (y/n)"
+    register: yn
+
+  - name: Continue
+    debug: msg="다음 단계로 진행 하겠습니다"
+    when: yn.user_input == 'y'
+    run_once: true
+
+  - name: Rollback
+    junos_install_config: host=192.168.0.32 user=juniper port=22
+     file="./opt/1st_check/set/Backup_config.xml"
+     overwrite=yes
+    when: yn.user_input == 'n'
+
+  - name: COMMMIT
+    tags: commit
+    junos_commit: host=192.168.0.32 user=juniper port=22
+    when: yn.user_input == 'n'
+
+  - name: 원상복구가 되었으며 시나리오를 종료 합니다.
+    meta: end_play
+    when: yn.user_input == 'n'

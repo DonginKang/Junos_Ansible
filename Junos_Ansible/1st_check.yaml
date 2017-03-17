@@ -1,0 +1,83 @@
+---
+- name: 1. 장비 상태 및 Routing 확인 
+  hosts: juniper
+  roles:
+  - Juniper.junos
+  connection: local
+  gather_facts: no
+
+  tasks:
+  - name: 1. 장비 상태 및 Routing 확인 
+    shell: cat ./opt/temp.xml
+
+  - name: "show chassis environment"
+    junos_cli:
+      host: 192.168.0.32
+      user: juniper
+      cli: show chassis environment
+      format: xml
+      dest: ./opt/1st_check/get/Show_Chassis_Enviroment.xml
+      logfile: ./opt/1st_check/get/1st_check.log
+
+  - name: "show chassis hardware"
+    junos_cli:
+      host: 192.168.0.32
+      user: juniper
+      cli: show chassis hardware
+      format: xml
+      dest: ./opt/1st_check/get/Show_Chassis_Hardware.xml
+      logfile: ./opt/1st_check/get/1st_check.log
+
+  - name: "show system processes extensive"
+    junos_cli:
+      host: 192.168.0.32
+      user: juniper
+      cli: show system processes extensive
+      format: text
+      dest: ./opt/1st_check/get/Show_Processes_Extensive.text
+      logfile: ./opt/1st_check/get/1st_check.log
+
+  - name: "show interface terse"
+    junos_cli:
+      host: 192.168.0.32
+      user: juniper
+      cli: show interface terse
+      format: xml
+      dest: ./opt/1st_check/get/Show_Interface_Terse.xml
+      logfile: ./opt/1st_check/get/1st_check.log
+
+  - name: "show route summary"
+    junos_cli:
+      host: 192.168.0.32
+      user: juniper
+      cli: show route summary
+      format: xml
+      dest: ./opt/1st_check/get/Show_Route_Summary.xml
+      logfile: ./opt/1st_check/get/1st_check.log
+
+  - name: "show bgp summary"
+    junos_cli:
+      host: 192.168.0.32
+      user: juniper
+      cli: show bgp summary
+      format: xml
+      dest: ./opt/1st_check/get/Show_BGP_Summary.xml
+      logfile: ./opt/1st_check/get/1st_check.log
+
+  - name: "show ospf neighbor"
+    junos_cli:
+      host: 192.168.0.32
+      user: juniper
+      cli: show ospf neighbor
+      format: xml
+      dest: ./opt/1st_check/get/Show_OSPF_Neighbor.xml
+      logfile: ./opt/1st_check/get/1st_check.log
+
+  - name: "Get Device Configuration"
+    junos_rpc:
+      host: 192.168.0.32
+      user: juniper
+      rpc: get-config
+      dest: ./opt/1st_check/set/Backup_config.xml
+      logfile: ./opt/1st_check/get/1st_check.log
+      format: xml

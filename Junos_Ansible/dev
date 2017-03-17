@@ -1,0 +1,10 @@
+[juniper]
+192.168.0.32
+
+#[control]
+#control ansible_connection=local
+
+#[all:vars]
+#ansible_user = juniper
+#ansible_ssh_pass = jun2per
+

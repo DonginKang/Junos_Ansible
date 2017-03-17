@@ -1,0 +1,14 @@
+---
+- name: Set OSPF Interface Passive
+  hosts: juniper
+  roles:
+  - Juniper.junos
+  connection: local
+  gather_facts: no
+
+  tasks:
+  - name: 1. 장비상태 및 Routing 확인
+    debug: msg="1. 장비상태 및 Routing 확인"
+
+  - name: 으아아아아앙 
+    shell: cat ./opt/temp.xml

@@ -1,0 +1,155 @@
+---
+- name: 10. 작업 후 모니터링
+  hosts: juniper
+  roles:
+  - Juniper.junos
+  connection: local
+  gather_facts: no
+
+  tasks:
+  - name: 10. 작업 후 모니터링
+    shell: cat ./opt/temp.xml
+
+  - name: "show chassis environment"
+    junos_cli:
+      host: 192.168.0.32
+      user: juniper
+      cli: show chassis environment
+      format: xml
+      dest: ./opt/10th_monitoring/get/Show_Chassis_Enviroment.xml
+      logfile: ./opt/10th_monitoring/get/10th_monitoring.log
+
+  - name: "show chassis hardware"
+    junos_cli:
+      host: 192.168.0.32
+      user: juniper
+      cli: show chassis hardware
+      format: xml
+      dest: ./opt/10th_monitoring/get/Show_Chassis_Hardware.xml
+      logfile: ./opt/10th_monitoring/get/10th_monitoring.log
+
+  - name: "show system processes extensive"
+    junos_cli:
+      host: 192.168.0.32
+      user: juniper
+      cli: show system processes extensive
+      format: text
+      dest: ./opt/10th_monitoring/get/Show_Processes_Extensive.text
+      logfile: ./opt/10th_monitoring/get/10th_monitoring.log
+
+  - name: "show interface terse"
+    junos_cli:
+      host: 192.168.0.32
+      user: juniper
+      cli: show interface terse
+      format: xml
+      dest: ./opt/10th_monitoring/get/Show_Interface_Terse.xml
+      logfile: ./opt/10th_monitoring/get/10th_monitoring.log
+
+  - name: "show route summary"
+    junos_cli:
+      host: 192.168.0.32
+      user: juniper
+      cli: show route summary
+      format: xml
+      dest: ./opt/10th_monitoring/get/Show_Route_Summary.xml
+      logfile: ./opt/10th_monitoring/get/10th_monitoring.log
+
+  - name: "show bgp summary"
+    junos_cli:
+      host: 192.168.0.32
+      user: juniper
+      cli: show bgp summary
+      format: xml
+      dest: ./opt/10th_monitoring/get/Show_BGP_Summary.xml
+      logfile: ./opt/10th_monitoring/get/10th_monitoring.log
+
+  - name: "show ospf neighbor"
+    junos_cli:
+      host: 192.168.0.32
+      user: juniper
+      cli: show ospf neighbor
+      format: xml
+      dest: ./opt/10th_monitoring/get/Show_OSPF_Neighbor.xml
+      logfile: ./opt/10th_monitoring/get/10th_monitoring.log
+
+
+############################# 최종 트래픽 확인 ###########################
+
+  - name: 트래픽 확인 | ge-1/0/0   
+    junos_rpc:
+      host: 192.168.0.32
+      user: juniper
+      rpc: get-interface-information
+      kwargs: interface_name=ge-1/0/0
+      format: json
+      dest: ./opt/10th_monitoring/get/get_interface_information.conf
+      logfile: ./opt/10th_monitoring/get/10th_monitoring.log      
+    register: junos
+  - name: 트래픽 확인 | ge-1/0/0 
+    debug: msg="{{junos.rpc_reply['interface-information'][0]['physical-interface'][0]['traffic-statistics'][0] | to_nice_json}}"
+
+  - name: 트래픽 확인 | ge-1/0/1
+    junos_rpc:
+      host: 192.168.0.32
+      user: juniper
+      rpc: get-interface-information
+      kwargs: interface_name=ge-1/0/1
+      format: json
+      dest: ./opt/10th_monitoring/get/get_interface_information.conf
+      logfile: ./opt/10th_monitoring/get/10th_monitoring.log
+    register: junos
+  - name: 트래픽 확인 | ge-1/0/1
+    debug: msg="{{junos.rpc_reply['interface-information'][0]['physical-interface'][0]['traffic-statistics'][0]|to_nice_json}}"
+
+  - name: 트래픽 확인 | ge-1/0/4
+    junos_rpc:
+      host: 192.168.0.32
+      user: juniper
+      rpc: get-interface-information
+      kwargs: interface_name=ge-1/0/4
+      format: json
+      dest: ./opt/10th_monitoring/get/get_interface_information.conf
+      logfile: ./opt/10th_monitoring/get/10th_monitoring.log
+    register: junos
+  - name: 트래픽 확인 | ge-1/0/4
+    debug: msg="{{junos.rpc_reply['interface-information'][0]['physical-interface'][0]['traffic-statistics'][0]|to_nice_json}}"
+
+  - name: 트래픽 확인 | ge-1/0/5
+    junos_rpc:
+      host: 192.168.0.32
+      user: juniper
+      rpc: get-interface-information
+      kwargs: interface_name=ge-1/0/5
+      format: json
+      dest: ./opt/10th_monitoring/get/get_interface_information.conf
+      logfile: ./opt/10th_monitoring/get/10th_monitoring.log
+    register: junos
+  - name: 트래픽 확인 | ge-1/0/5
+    debug: msg="{{junos.rpc_reply['interface-information'][0]['physical-interface'][0]['traffic-statistics'][0]|to_nice_json}}"
+
+ ###################### 계속 진행 or 롤백  #####################
+
+  - name: Confirm for continue to next step
+    pause: prompt="시나리오를 종료 하시겠습니까?  (y/n)"
+    register: yn
+
+  - name: Continue
+    debug: msg="시나리오가 종료 되었습니다."
+    when: yn.user_input == 'y'
+    run_once: true
+
+  - name: Rollback
+    junos_install_config: host=192.168.0.32 user=juniper port=22
+     file="./opt/1st_check/set/Backup_config.xml"
+     overwrite=yes
+    when: yn.user_input == 'n'
+
+  - name: COMMMIT
+    tags: commit
+    junos_commit: host=192.168.0.32 user=juniper port=22
+    when: yn.user_input == 'n'
+
+  - name: 원상복구가 되었으며 시나리오를 종료 합니다.
+    meta: end_play
+    when: yn.user_input == 'n'

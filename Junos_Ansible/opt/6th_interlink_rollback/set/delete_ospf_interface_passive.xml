@@ -1,0 +1,15 @@
+<protocols>
+        <ospf>
+            <area>
+                <name>0.0.0.0</name>
+                <interface>
+                    <name>ge-1/1/1.0</name>
+                    <passive operation="delete"/>
+                </interface>
+                <interface>
+                    <name>ge-1/1/2.0</name>
+                    <passive operation="delete"/>
+                </interface>
+            </area>
+        </ospf>
+</protocols>

@@ -1,0 +1,172 @@
+---
+- name: 6. Interlink 원복 (OSPF/BGP/Link)
+  hosts: juniper
+  roles:
+  - Juniper.junos
+  connection: local
+  gather_facts: no
+
+
+  tasks:
+  - name: 6. Interlink 원복 (OSPF/BGP/Link)
+    shell: cat ./opt/temp.xml
+
+ ################ Delete Interface Disable #####################
+
+  - name: Delete Interface Disable
+    junos_install_config: host=192.168.0.32 user=juniper port=22
+     diffs_file="./opt/6th_interlink_rollback/get/delete_interface_disable.diff"
+     logfile="./opt/6th_interlink_rollback/get/interlink_rollback.log"
+     file="./opt/6th_interlink_rollback/set/delete_interface_disable.xml"
+     replace=yes
+
+  - name: Delete Interface Disable
+    shell: cat ./opt/6th_interlink_rollback/get/delete_interface_disable.diff
+    register: out
+  - name: Diff
+    debug: var=out.stdout_lines
+
+  - name: COMMIT
+    tags: commit
+    junos_commit: host=192.168.0.32 user=juniper port=22
+     logfile="./opt/6th_interlink_rollback/get/interlink_rollback.log"
+
+
+  ################ Ping Test #####################    
+
+  - name: Ping 21.1.1.2
+    junos_ping:
+      host=192.168.0.32
+      user=juniper
+      dest_ip=21.1.1.2
+      acceptable_packet_loss=1
+    register: junos
+  - debug: var=junos
+
+  - name: Ping 21.1.2.2
+    junos_ping:
+      host=192.168.0.32
+      user=juniper
+      dest_ip=21.1.2.2
+      acceptable_packet_loss=1
+    register: junos
+  - debug: var=junos
+
+ ################ SHOW Interface Descriptions #####################
+
+  - name: Show Interface Descriptions
+    junos_cli:
+      host: 192.168.0.32
+      user: juniper
+      cli: show interfaces descriptions
+      format: xml
+      dest: ./opt/6th_interlink_rollback/get/show_interfaces_descriptions.xml
+      logfile: ./opt/6th_interlink_rollback/get/interlink_rollback.log
+  - name: SHOW Interface Descriptions
+    shell: cat ./opt/6th_interlink_rollback/get/show_interfaces_descriptions.xml
+    register: out
+  - name: SHOW Interface Descriptions
+    debug: var=out.stdout_lines
+
+
+ ################ Activate Bgp Neighbor #####################
+
+
+  - name: Activate Bgp Neighbor
+    junos_install_config: host=192.168.0.32 user=juniper port=22
+     diffs_file="./opt/6th_interlink_rollback/get/activate_bgp_neighbor.diff"
+     logfile="./opt/6th_interlink_rollback/get/interlink_rollback.log"
+     file="./opt/6th_interlink_rollback/set/activate_bgp_neighbor.xml"
+     replace=yes
+
+  - name: Activate Bgp Neighbor
+    shell: cat ./opt/6th_interlink_rollback/get/activate_bgp_neighbor.diff
+    register: out
+  - name: Diff
+    debug: var=out.stdout_lines
+
+  - name: COMMIT
+    tags: commit
+    junos_commit: host=192.168.0.32 user=juniper port=22
+     logfile="./opt/6th_interlink_rollback/get/interlink_rollback.log"
+
+ ################ Show Bgp Summary #####################
+
+  - name: Show Bgp Summary
+    junos_cli:
+      host: 192.168.0.32
+      user: juniper
+      cli: show bgp summary
+      format: xml
+      dest: ./opt/6th_interlink_rollback/get/show_bgp_summary.xml
+      logfile: ./opt/6th_interlink_rollback/get/interlink_rollback.log
+  - name: Show Bgp Summary
+    shell: cat ./opt/6th_interlink_rollback/get/show_bgp_summary.xml
+    register: out
+  - name: Show Bgp Summary
+    debug: var=out.stdout_lines
+
+
+ ################ Delete OSPF Passive #####################
+
+
+  - name: Delete OSPF Passive
+    junos_install_config: host=192.168.0.32 user=juniper port=22
+     diffs_file="./opt/6th_interlink_rollback/get/delete_ospf_passive.diff"
+     logfile="./opt/6th_interlink_rollback/get/interlink_rollback.log"
+     file="./opt/6th_interlink_rollback/set/delete_ospf_interface_passive.xml"
+     replace=yes
+
+  - name: Delete OSPF Passive
+    shell: cat ./opt/6th_interlink_rollback/get/delete_ospf_passive.diff
+    register: out
+  - name: Diff
+    debug: var=out.stdout_lines
+
+  - name: COMMIT
+    tags: commit
+    junos_commit: host=192.168.0.32 user=juniper port=22
+     logfile="./opt/6th_interlink_rollback/get/interlink_rollback.log"
+
+
+ ################ Show OSPF Neighbor #####################
+
+  - name: Show OSPF Neighbor
+    junos_cli:
+      host: 192.168.0.32
+      user: juniper
+      cli: show ospf neighbor
+      format: xml
+      dest: ./opt/6th_interlink_rollback/get/show_ospf_neighbor.xml
+      logfile: ./opt/6th_interlink_rollback/get/interlink_rollback.log
+  - name: Show OSPF Neighbor
+    shell: cat ./opt/6th_interlink_rollback/get/show_ospf_neighbor.xml
+    register: out
+  - name: Show OSPF Neighbor
+    debug: var=out.stdout_lines
+
+ ###################### 계속 진행 or 롤백  #####################
+
+  - name: Confirm for continue to next step
+    pause: prompt="계속 진행 하시겠습니까? (y/n)"
+    register: yn
+
+  - name: Continue
+    debug: msg="다음 단계로 진행 하겠습니다"
+    when: yn.user_input == 'y'
+    run_once: true
+
+  - name: Rollback
+    junos_install_config: host=192.168.0.32 user=juniper port=22
+     file="./opt/1st_check/set/Backup_config.xml"
+     overwrite=yes
+    when: yn.user_input == 'n'
+
+  - name: COMMMIT
+    tags: commit
+    junos_commit: host=192.168.0.32 user=juniper port=22
+    when: yn.user_input == 'n'
+
+  - name: 원상복구가 되었으며 시나리오를 종료 합니다.
+    meta: end_play
+    when: yn.user_input == 'n'

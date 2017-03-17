@@ -1,0 +1,280 @@
+2017-03-17 07:17:36,051:CONFIG:192.168.0.32:calling RPC: get-interface-information
+2017-03-17 07:17:36,052:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:17:36,875:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:17:37,051:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:17:37,168:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:17:37,288:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:17:37,404:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:17:37,678:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:17:38,558:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:17:38,674:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:17:38,794:CONFIG:192.168.0.32:rpc reponse recvd
+2017-03-17 07:17:38,795:ncclient.operations.rpc:Requesting 'CloseSession'
+2017-03-17 07:17:41,283:CONFIG:192.168.0.32:calling RPC: get-interface-information
+2017-03-17 07:17:41,285:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:17:42,104:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:17:42,272:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:17:42,388:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:17:42,508:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:17:42,626:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:17:42,945:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:17:43,989:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:17:44,066:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:17:44,190:CONFIG:192.168.0.32:rpc reponse recvd
+2017-03-17 07:17:44,190:ncclient.operations.rpc:Requesting 'CloseSession'
+2017-03-17 07:17:46,614:CONFIG:192.168.0.32:calling RPC: get-interface-information
+2017-03-17 07:17:46,616:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:17:47,437:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:17:47,609:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:17:47,726:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:17:47,843:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:17:47,960:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:17:48,228:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:17:49,296:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:17:49,413:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:17:49,560:CONFIG:192.168.0.32:rpc reponse recvd
+2017-03-17 07:17:49,560:ncclient.operations.rpc:Requesting 'CloseSession'
+2017-03-17 07:17:51,826:CONFIG:192.168.0.32:calling RPC: get-interface-information
+2017-03-17 07:17:51,829:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:17:52,696:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:17:52,818:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:17:52,954:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:17:53,077:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:17:53,195:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:17:53,500:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:17:54,375:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:17:54,542:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:17:54,621:CONFIG:192.168.0.32:rpc reponse recvd
+2017-03-17 07:17:54,622:ncclient.operations.rpc:Requesting 'CloseSession'
+2017-03-17 07:17:55,448:CONFIG:192.168.0.32:connecting to host: juniper@192.168.0.32:830
+2017-03-17 07:17:55,512:ncclient.transport.ssh:Connected (version 2.0, client OpenSSH_7.1)
+2017-03-17 07:17:56,200:ncclient.transport.ssh:Authentication (publickey) successful!
+2017-03-17 07:17:57,195:ncclient.transport.session:initialized: session-id=36195 | server_capabilities=<dictionary-keyiterator object at 0x7f3eed5deba8>
+2017-03-17 07:17:57,196:CONFIG:192.168.0.32:Getting cli output
+2017-03-17 07:17:57,197:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:17:57,314:ncclient.operations.rpc:Requesting 'CloseSession'
+2017-03-17 07:17:58,351:CONFIG:192.168.0.32:connecting to host: juniper@192.168.0.32:22
+2017-03-17 07:17:58,414:ncclient.transport.ssh:Connected (version 2.0, client OpenSSH_7.1)
+2017-03-17 07:17:58,836:ncclient.transport.ssh:Authentication (publickey) successful!
+2017-03-17 07:17:59,817:ncclient.transport.session:initialized: session-id=36200 | server_capabilities=<dictionary-keyiterator object at 0x7fdb34166838>
+2017-03-17 07:17:59,818:CONFIG:192.168.0.32:pushing file: /home/vagrant/Desktop/0331/opt/9th_delete_ospf_passive/set/delete_ospf_passive.xml
+2017-03-17 07:17:59,818:CONFIG:192.168.0.32:taking lock
+2017-03-17 07:17:59,818:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:17:59,948:CONFIG:192.168.0.32:loading config
+2017-03-17 07:17:59,950:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:18:00,177:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:18:01,913:CONFIG:192.168.0.32:doing a commit-check, please be patient
+2017-03-17 07:18:01,914:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:18:05,596:CONFIG:192.168.0.32:committing change, please be patient
+2017-03-17 07:18:05,597:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:18:13,035:CONFIG:192.168.0.32:unlocking
+2017-03-17 07:18:13,035:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:18:13,515:CONFIG:192.168.0.32:change completed
+2017-03-17 07:18:13,515:ncclient.operations.rpc:Requesting 'CloseSession'
+2017-03-17 07:18:14,576:CONFIG:192.168.0.32:connecting to host: juniper@192.168.0.32:22
+2017-03-17 07:18:14,640:ncclient.transport.ssh:Connected (version 2.0, client OpenSSH_7.1)
+2017-03-17 07:18:15,082:ncclient.transport.ssh:Authentication (publickey) successful!
+2017-03-17 07:18:16,100:ncclient.transport.session:initialized: session-id=36276 | server_capabilities=<dictionary-keyiterator object at 0x7f4f81f0bc00>
+2017-03-17 07:18:16,101:CONFIG:192.168.0.32:taking lock
+2017-03-17 07:18:16,101:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:18:16,217:CONFIG:192.168.0.32:committing change, please be patient
+2017-03-17 07:18:16,219:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:18:22,150:CONFIG:192.168.0.32:change completed
+2017-03-17 07:18:22,151:CONFIG:192.168.0.32:unlocking
+2017-03-17 07:18:22,151:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:18:22,420:ncclient.operations.rpc:Requesting 'CloseSession'
+2017-03-17 07:18:24,628:CONFIG:192.168.0.32:calling RPC: get-interface-information
+2017-03-17 07:18:24,630:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:18:25,515:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:18:25,698:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:18:25,766:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:18:25,903:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:18:26,028:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:18:26,298:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:18:27,169:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:18:27,357:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:18:27,426:CONFIG:192.168.0.32:rpc reponse recvd
+2017-03-17 07:18:27,427:ncclient.operations.rpc:Requesting 'CloseSession'
+2017-03-17 07:18:29,750:CONFIG:192.168.0.32:calling RPC: get-interface-information
+2017-03-17 07:18:29,751:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:18:30,643:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:18:30,762:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:18:30,891:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:18:31,016:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:18:31,146:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:18:31,415:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:18:32,526:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:18:32,737:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:18:32,775:CONFIG:192.168.0.32:rpc reponse recvd
+2017-03-17 07:18:32,776:ncclient.operations.rpc:Requesting 'CloseSession'
+2017-03-17 07:18:35,175:CONFIG:192.168.0.32:calling RPC: get-interface-information
+2017-03-17 07:18:35,177:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:18:36,096:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:18:36,214:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:18:36,336:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:18:36,458:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:18:36,584:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:18:36,863:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:18:38,177:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:18:38,343:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:18:38,412:CONFIG:192.168.0.32:rpc reponse recvd
+2017-03-17 07:18:38,413:ncclient.operations.rpc:Requesting 'CloseSession'
+2017-03-17 07:18:40,776:CONFIG:192.168.0.32:calling RPC: get-interface-information
+2017-03-17 07:18:40,777:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:18:41,573:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:18:41,743:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:18:41,858:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:18:41,978:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:18:42,106:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:18:42,382:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:18:43,407:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:18:43,573:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:18:43,694:CONFIG:192.168.0.32:rpc reponse recvd
+2017-03-17 07:18:43,695:ncclient.operations.rpc:Requesting 'CloseSession'
+2017-03-17 07:18:44,600:CONFIG:192.168.0.32:connecting to host: juniper@192.168.0.32:830
+2017-03-17 07:18:44,663:ncclient.transport.ssh:Connected (version 2.0, client OpenSSH_7.1)
+2017-03-17 07:18:45,218:ncclient.transport.ssh:Authentication (publickey) successful!
+2017-03-17 07:18:46,226:ncclient.transport.session:initialized: session-id=36474 | server_capabilities=<dictionary-keyiterator object at 0x7f6d3983cba8>
+2017-03-17 07:18:46,226:CONFIG:192.168.0.32:Getting cli output
+2017-03-17 07:18:46,229:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:18:46,346:ncclient.operations.rpc:Requesting 'CloseSession'
+2017-03-17 08:11:17,687:CONFIG:192.168.0.32:calling RPC: get-interface-information
+2017-03-17 08:11:17,689:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:11:18,577:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:11:18,888:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:11:19,013:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:11:19,139:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:11:19,260:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:11:19,538:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:11:19,917:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:11:20,036:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:11:20,157:CONFIG:192.168.0.32:rpc reponse recvd
+2017-03-17 08:11:20,157:ncclient.operations.rpc:Requesting 'CloseSession'
+2017-03-17 08:11:22,547:CONFIG:192.168.0.32:calling RPC: get-interface-information
+2017-03-17 08:11:22,548:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:11:23,437:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:11:23,604:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:11:23,670:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:11:23,801:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:11:23,917:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:11:24,240:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:11:25,130:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:11:25,296:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:11:25,421:CONFIG:192.168.0.32:rpc reponse recvd
+2017-03-17 08:11:25,421:ncclient.operations.rpc:Requesting 'CloseSession'
+2017-03-17 08:11:27,803:CONFIG:192.168.0.32:calling RPC: get-interface-information
+2017-03-17 08:11:27,805:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:11:28,677:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:11:28,794:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:11:28,920:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:11:29,047:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:11:29,175:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:11:29,445:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:11:30,320:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:11:30,497:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:11:30,679:CONFIG:192.168.0.32:rpc reponse recvd
+2017-03-17 08:11:30,680:ncclient.operations.rpc:Requesting 'CloseSession'
+2017-03-17 08:11:33,056:CONFIG:192.168.0.32:calling RPC: get-interface-information
+2017-03-17 08:11:33,057:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:11:33,887:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:11:34,065:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:11:34,131:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:11:34,298:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:11:34,415:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:11:34,692:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:11:35,714:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:11:35,882:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:11:35,951:CONFIG:192.168.0.32:rpc reponse recvd
+2017-03-17 08:11:35,952:ncclient.operations.rpc:Requesting 'CloseSession'
+2017-03-17 08:11:36,605:CONFIG:192.168.0.32:connecting to host: juniper@192.168.0.32:830
+2017-03-17 08:11:36,667:ncclient.transport.ssh:Connected (version 2.0, client OpenSSH_7.1)
+2017-03-17 08:11:37,233:ncclient.transport.ssh:Authentication (publickey) successful!
+2017-03-17 08:11:38,216:ncclient.transport.session:initialized: session-id=46105 | server_capabilities=<dictionary-keyiterator object at 0x7fecb5b76ba8>
+2017-03-17 08:11:38,216:CONFIG:192.168.0.32:Getting cli output
+2017-03-17 08:11:38,218:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:11:38,335:ncclient.operations.rpc:Requesting 'CloseSession'
+2017-03-17 08:11:39,188:CONFIG:192.168.0.32:connecting to host: juniper@192.168.0.32:22
+2017-03-17 08:11:39,253:ncclient.transport.ssh:Connected (version 2.0, client OpenSSH_7.1)
+2017-03-17 08:11:39,646:ncclient.transport.ssh:Authentication (publickey) successful!
+2017-03-17 08:11:40,599:ncclient.transport.session:initialized: session-id=46110 | server_capabilities=<dictionary-keyiterator object at 0x7f7296a62838>
+2017-03-17 08:11:40,599:CONFIG:192.168.0.32:pushing file: /home/vagrant/Desktop/0331/opt/9th_delete_ospf_passive/set/delete_ospf_passive.xml
+2017-03-17 08:11:40,599:CONFIG:192.168.0.32:taking lock
+2017-03-17 08:11:40,600:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:11:40,716:CONFIG:192.168.0.32:loading config
+2017-03-17 08:11:40,717:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:11:40,996:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:11:42,423:CONFIG:192.168.0.32:doing a commit-check, please be patient
+2017-03-17 08:11:42,424:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:11:45,759:CONFIG:192.168.0.32:committing change, please be patient
+2017-03-17 08:11:45,761:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:11:52,690:CONFIG:192.168.0.32:unlocking
+2017-03-17 08:11:52,691:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:11:53,139:CONFIG:192.168.0.32:change completed
+2017-03-17 08:11:53,139:ncclient.operations.rpc:Requesting 'CloseSession'
+2017-03-17 08:11:54,100:CONFIG:192.168.0.32:connecting to host: juniper@192.168.0.32:22
+2017-03-17 08:11:54,164:ncclient.transport.ssh:Connected (version 2.0, client OpenSSH_7.1)
+2017-03-17 08:11:54,606:ncclient.transport.ssh:Authentication (publickey) successful!
+2017-03-17 08:11:55,601:ncclient.transport.session:initialized: session-id=46186 | server_capabilities=<dictionary-keyiterator object at 0x7fda7ad0ac00>
+2017-03-17 08:11:55,601:CONFIG:192.168.0.32:taking lock
+2017-03-17 08:11:55,602:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:11:55,718:CONFIG:192.168.0.32:committing change, please be patient
+2017-03-17 08:11:55,719:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:12:01,531:CONFIG:192.168.0.32:change completed
+2017-03-17 08:12:01,531:CONFIG:192.168.0.32:unlocking
+2017-03-17 08:12:01,531:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:12:01,907:ncclient.operations.rpc:Requesting 'CloseSession'
+2017-03-17 08:12:04,207:CONFIG:192.168.0.32:calling RPC: get-interface-information
+2017-03-17 08:12:04,209:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:12:05,098:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:12:05,218:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:12:05,334:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:12:05,453:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:12:05,577:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:12:05,849:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:12:06,709:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:12:06,830:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:12:06,954:CONFIG:192.168.0.32:rpc reponse recvd
+2017-03-17 08:12:06,955:ncclient.operations.rpc:Requesting 'CloseSession'
+2017-03-17 08:12:09,264:CONFIG:192.168.0.32:calling RPC: get-interface-information
+2017-03-17 08:12:09,266:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:12:10,108:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:12:10,281:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:12:10,408:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:12:10,525:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:12:10,646:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:12:10,939:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:12:11,828:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:12:11,945:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:12:12,067:CONFIG:192.168.0.32:rpc reponse recvd
+2017-03-17 08:12:12,068:ncclient.operations.rpc:Requesting 'CloseSession'
+2017-03-17 08:12:14,422:CONFIG:192.168.0.32:calling RPC: get-interface-information
+2017-03-17 08:12:14,423:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:12:15,298:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:12:15,418:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:12:15,562:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:12:15,686:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:12:15,806:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:12:16,075:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:12:16,909:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:12:17,077:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:12:17,197:CONFIG:192.168.0.32:rpc reponse recvd
+2017-03-17 08:12:17,197:ncclient.operations.rpc:Requesting 'CloseSession'
+2017-03-17 08:12:19,567:CONFIG:192.168.0.32:calling RPC: get-interface-information
+2017-03-17 08:12:19,568:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:12:20,451:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:12:20,568:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:12:20,687:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:12:20,808:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:12:20,937:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:12:21,228:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:12:21,597:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:12:21,767:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:12:21,843:CONFIG:192.168.0.32:rpc reponse recvd
+2017-03-17 08:12:21,844:ncclient.operations.rpc:Requesting 'CloseSession'
+2017-03-17 08:12:22,573:CONFIG:192.168.0.32:connecting to host: juniper@192.168.0.32:830
+2017-03-17 08:12:22,636:ncclient.transport.ssh:Connected (version 2.0, client OpenSSH_7.1)
+2017-03-17 08:12:23,174:ncclient.transport.ssh:Authentication (publickey) successful!
+2017-03-17 08:12:24,137:ncclient.transport.session:initialized: session-id=46384 | server_capabilities=<dictionary-keyiterator object at 0x7f86a80f2ba8>
+2017-03-17 08:12:24,137:CONFIG:192.168.0.32:Getting cli output
+2017-03-17 08:12:24,139:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:12:24,278:ncclient.operations.rpc:Requesting 'CloseSession'

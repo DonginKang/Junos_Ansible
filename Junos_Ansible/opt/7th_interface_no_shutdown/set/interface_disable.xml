@@ -1,0 +1,18 @@
+    <interfaces>
+        <interface>
+            <name>ge-1/0/0</name>
+            <disable operation="delete"/>
+        </interface>
+        <interface>
+            <name>ge-1/0/1</name>
+            <disable operation="delete"/>
+        </interface>
+        <interface>
+            <name>ge-1/0/4</name>
+            <disable operation="delete"/>
+        </interface>
+        <interface>
+            <name>ge-1/0/5</name>
+            <disable operation="delete"/>
+        </interface>
+    </interfaces>

@@ -1,0 +1,133 @@
+---
+- name: 5. Interlink 절체(OSPF/BGP/Link)
+  hosts: juniper
+  roles:
+  - Juniper.junos
+  connection: local
+  gather_facts: no
+
+  tasks:
+
+
+  - name: 5. Interlink 절체(OSPF/BGP/Link)
+    shell: cat ./opt/temp.xml
+
+  ################ Show OSPF Neighbor #####################
+
+  - name: Show OSPF Neighbor
+    junos_cli:
+      host: 192.168.0.32
+      user: juniper
+      cli: show ospf neighbor
+      format: xml
+      dest: ./opt/5th_interlink_cut/get/show_ospf_neighbor.xml
+      logfile: ./opt/5th_interlink_cut/get/interlink_cut.log
+  - name: Show OSPF Neighbor
+    shell: cat ./opt/5th_interlink_cut/get/show_ospf_neighbor.xml
+    register: out
+  - name: Show OSPF Neighbor
+    debug: var=out.stdout_lines
+
+
+ ################ SET OSPF Interface Passive #####################
+
+  - name: Set OSPF Interface Passive
+    junos_install_config: host=192.168.0.32 user=juniper port=22
+     diffs_file="./opt/5th_interlink_cut/get/ospf_interface_passive.diff"
+     logfile="./opt/5th_interlink_cut/get/interlink_cut.log"
+     file="./opt/5th_interlink_cut/set/set_ospf_interface_passive.xml"
+     replace=yes
+
+  - name: Set OSPF Passive
+    shell: cat ./opt/5th_interlink_cut/get/ospf_interface_passive.diff
+    register: out
+  - name: Diff
+    debug: var=out.stdout_lines
+
+  - name: COMMIT
+    tags: commit
+    junos_commit: host=192.168.0.32 user=juniper port=22
+     logfile="./opt/5th_interlink_cut/get/interlink_cut.log"
+
+
+  ################ Show OSPF Neighbor #####################
+
+  - name: Show OSPF Neighbor
+    junos_cli:
+      host: 192.168.0.32
+      user: juniper
+      cli: show ospf neighbor
+      format: xml
+      dest: ./opt/5th_interlink_cut/get/show_ospf_neighbor.xml
+      logfile: ./opt/5th_interlink_cut/get/interlink_cut.log
+  - name: Show OSPF Neighbor
+    shell: cat ./opt/5th_interlink_cut/get/show_ospf_neighbor.xml
+    register: out
+  - name: Show OSPF Neighbor
+    debug: var=out.stdout_lines
+
+
+
+   ################ Deactivate Bgp Neighbor & Interface Disable  #####################
+
+  - name: Deactivate Bgp Neighbor & Interface Disable
+    junos_install_config: host=192.168.0.32 user=juniper port=22
+     diffs_file="./opt/5th_interlink_cut/get/bgp_deactivate.diff"
+     logfile="./opt/5th_interlink_cut/get/interlink_cut.log"
+     file="./opt/5th_interlink_cut/set/bgp_deactivate.xml"
+     replace=yes
+
+  - name: Deactive Bgp Neighbor
+    shell: cat ./opt/5th_interlink_cut/get/bgp_deactivate.diff
+    register: out
+  - name: Diff
+    debug: var=out.stdout_lines
+
+  - name: COMMIT
+    tags: commit
+    junos_commit: host=192.168.0.32 user=juniper port=22
+     comment="commit of confirmation"
+     logfile="./opt/5th_interlink_cut/get/interlink_cut.log"
+
+
+  ######### Show interfaces descriptions | match "CORE#2"############
+
+  - name: Show interfaces descriptions | match "CORE#2"
+    junos_cli:
+      host: 192.168.0.32
+      user: juniper
+      cli: show interfaces descriptions
+      format: xml
+      dest: ./opt/5th_interlink_cut/get/show_interfaces_descriptions.xml
+      logfile: ./opt/5th_interlink_cut/get/interlink_cut.log
+  - name: Show interfaces descriptions | match "CORE#2"
+    shell: cat ./opt/5th_interlink_cut/get/show_interfaces_descriptions.xml
+    register: out
+  - name: Show interfaces descriptions | match "CORE#2"
+    debug: var=out.stdout_lines
+
+ ###################### 계속 진행 or 롤백  #####################
+
+  - name: Confirm for continue to next step
+    pause: prompt="계속 진행 하시겠습니까? (y/n)"
+    register: yn
+
+  - name: Continue
+    debug: msg="다음 단계로 진행 하겠습니다"
+    when: yn.user_input == 'y'
+    run_once: true
+
+  - name: Rollback
+    junos_install_config: host=192.168.0.32 user=juniper port=22
+     file="./opt/1st_check/set/Backup_config.xml"
+     overwrite=yes
+    when: yn.user_input == 'n'
+
+  - name: COMMMIT
+    tags: commit
+    junos_commit: host=192.168.0.32 user=juniper port=22
+    when: yn.user_input == 'n'
+
+  - name: 원상복구가 되었으며 시나리오를 종료 합니다.
+    meta: end_play
+    when: yn.user_input == 'n'

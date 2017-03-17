@@ -1,0 +1,405 @@
+2017-03-17 05:33:36,174:CONFIG:192.168.0.32:connecting to host: juniper@192.168.0.32:830
+2017-03-17 05:33:36,240:ncclient.transport.ssh:Connected (version 2.0, client OpenSSH_7.1)
+2017-03-17 05:33:36,923:ncclient.transport.ssh:Authentication (publickey) successful!
+2017-03-17 05:33:37,943:ncclient.transport.session:initialized: session-id=34966 | server_capabilities=<dictionary-keyiterator object at 0x7fedd8b63cb0>
+2017-03-17 05:33:37,944:CONFIG:192.168.0.32:Getting cli output
+2017-03-17 05:33:37,945:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 05:33:38,063:ncclient.operations.rpc:Requesting 'CloseSession'
+2017-03-17 05:33:39,072:CONFIG:192.168.0.32:connecting to host: juniper@192.168.0.32:22
+2017-03-17 05:33:39,144:ncclient.transport.ssh:Connected (version 2.0, client OpenSSH_7.1)
+2017-03-17 05:33:39,574:ncclient.transport.ssh:Authentication (publickey) successful!
+2017-03-17 05:33:40,577:ncclient.transport.session:initialized: session-id=34971 | server_capabilities=<dictionary-keyiterator object at 0x7f7c9d2df890>
+2017-03-17 05:33:40,578:CONFIG:192.168.0.32:pushing file: /home/vagrant/Desktop/0331/opt/5th_interlink_cut/set/set_ospf_interface_passive.xml
+2017-03-17 05:33:40,578:CONFIG:192.168.0.32:taking lock
+2017-03-17 05:33:40,579:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 05:33:40,697:CONFIG:192.168.0.32:loading config
+2017-03-17 05:33:40,698:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 05:33:40,917:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 05:33:42,354:CONFIG:192.168.0.32:doing a commit-check, please be patient
+2017-03-17 05:33:42,355:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 05:33:45,702:CONFIG:192.168.0.32:committing change, please be patient
+2017-03-17 05:33:45,705:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 05:33:52,944:CONFIG:192.168.0.32:unlocking
+2017-03-17 05:33:52,945:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 05:33:53,314:CONFIG:192.168.0.32:change completed
+2017-03-17 05:33:53,315:ncclient.operations.rpc:Requesting 'CloseSession'
+2017-03-17 05:33:54,435:CONFIG:192.168.0.32:connecting to host: juniper@192.168.0.32:22
+2017-03-17 05:33:54,499:ncclient.transport.ssh:Connected (version 2.0, client OpenSSH_7.1)
+2017-03-17 05:33:54,924:ncclient.transport.ssh:Authentication (publickey) successful!
+2017-03-17 05:33:55,883:ncclient.transport.session:initialized: session-id=35047 | server_capabilities=<dictionary-keyiterator object at 0x7f8fbc186c58>
+2017-03-17 05:33:55,884:CONFIG:192.168.0.32:taking lock
+2017-03-17 05:33:55,885:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 05:33:56,004:CONFIG:192.168.0.32:committing change, please be patient
+2017-03-17 05:33:56,005:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 05:34:02,078:CONFIG:192.168.0.32:change completed
+2017-03-17 05:34:02,079:CONFIG:192.168.0.32:unlocking
+2017-03-17 05:34:02,079:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 05:34:02,304:ncclient.operations.rpc:Requesting 'CloseSession'
+2017-03-17 05:34:02,922:CONFIG:192.168.0.32:connecting to host: juniper@192.168.0.32:830
+2017-03-17 05:34:02,985:ncclient.transport.ssh:Connected (version 2.0, client OpenSSH_7.1)
+2017-03-17 05:34:03,407:ncclient.transport.ssh:Authentication (publickey) successful!
+2017-03-17 05:34:04,409:ncclient.transport.session:initialized: session-id=35085 | server_capabilities=<dictionary-keyiterator object at 0x7ff0c466ac58>
+2017-03-17 05:34:04,410:CONFIG:192.168.0.32:Getting cli output
+2017-03-17 05:34:04,411:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 05:34:04,536:ncclient.operations.rpc:Requesting 'CloseSession'
+2017-03-17 05:34:05,365:CONFIG:192.168.0.32:connecting to host: juniper@192.168.0.32:22
+2017-03-17 05:34:05,427:ncclient.transport.ssh:Connected (version 2.0, client OpenSSH_7.1)
+2017-03-17 05:34:05,957:ncclient.transport.ssh:Authentication (publickey) successful!
+2017-03-17 05:34:06,945:ncclient.transport.session:initialized: session-id=35090 | server_capabilities=<dictionary-keyiterator object at 0x7f360ec8d940>
+2017-03-17 05:34:06,946:CONFIG:192.168.0.32:pushing file: /home/vagrant/Desktop/0331/opt/5th_interlink_cut/set/bgp_deactivate.xml
+2017-03-17 05:34:06,946:CONFIG:192.168.0.32:taking lock
+2017-03-17 05:34:06,947:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 05:34:07,024:CONFIG:192.168.0.32:loading config
+2017-03-17 05:34:07,026:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 05:34:07,293:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 05:34:09,027:CONFIG:192.168.0.32:doing a commit-check, please be patient
+2017-03-17 05:34:09,028:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 05:34:14,034:CONFIG:192.168.0.32:committing change, please be patient
+2017-03-17 05:34:14,036:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 05:34:24,043:CONFIG:192.168.0.32:unlocking
+2017-03-17 05:34:24,044:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 05:34:24,638:CONFIG:192.168.0.32:change completed
+2017-03-17 05:34:24,639:ncclient.operations.rpc:Requesting 'CloseSession'
+2017-03-17 05:34:25,682:CONFIG:192.168.0.32:connecting to host: juniper@192.168.0.32:22
+2017-03-17 05:34:25,746:ncclient.transport.ssh:Connected (version 2.0, client OpenSSH_7.1)
+2017-03-17 05:34:26,430:ncclient.transport.ssh:Authentication (publickey) successful!
+2017-03-17 05:34:27,442:ncclient.transport.session:initialized: session-id=35189 | server_capabilities=<dictionary-keyiterator object at 0x7f46b008bc58>
+2017-03-17 05:34:27,443:CONFIG:192.168.0.32:taking lock
+2017-03-17 05:34:27,444:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 05:34:27,560:CONFIG:192.168.0.32:committing change, please be patient
+2017-03-17 05:34:27,561:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 05:34:33,523:CONFIG:192.168.0.32:change completed
+2017-03-17 05:34:33,524:CONFIG:192.168.0.32:unlocking
+2017-03-17 05:34:33,524:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 05:34:33,747:ncclient.operations.rpc:Requesting 'CloseSession'
+2017-03-17 05:34:34,443:CONFIG:192.168.0.32:connecting to host: juniper@192.168.0.32:830
+2017-03-17 05:34:34,508:ncclient.transport.ssh:Connected (version 2.0, client OpenSSH_7.1)
+2017-03-17 05:34:34,938:ncclient.transport.ssh:Authentication (publickey) successful!
+2017-03-17 05:34:35,935:ncclient.transport.session:initialized: session-id=35227 | server_capabilities=<dictionary-keyiterator object at 0x7fdc117d6c00>
+2017-03-17 05:34:35,936:CONFIG:192.168.0.32:Getting cli output
+2017-03-17 05:34:35,937:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 05:34:36,115:ncclient.operations.rpc:Requesting 'CloseSession'
+2017-03-17 07:33:12,673:CONFIG:192.168.0.32:connecting to host: juniper@192.168.0.32:830
+2017-03-17 07:33:12,738:ncclient.transport.ssh:Connected (version 2.0, client OpenSSH_7.1)
+2017-03-17 07:33:13,280:ncclient.transport.ssh:Authentication (publickey) successful!
+2017-03-17 07:33:14,256:ncclient.transport.session:initialized: session-id=38159 | server_capabilities=<dictionary-keyiterator object at 0x7f485b2a4c58>
+2017-03-17 07:33:14,256:CONFIG:192.168.0.32:Getting cli output
+2017-03-17 07:33:14,257:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:33:14,381:ncclient.operations.rpc:Requesting 'CloseSession'
+2017-03-17 07:33:15,379:CONFIG:192.168.0.32:connecting to host: juniper@192.168.0.32:22
+2017-03-17 07:33:15,445:ncclient.transport.ssh:Connected (version 2.0, client OpenSSH_7.1)
+2017-03-17 07:33:15,868:ncclient.transport.ssh:Authentication (publickey) successful!
+2017-03-17 07:33:16,842:ncclient.transport.session:initialized: session-id=38164 | server_capabilities=<dictionary-keyiterator object at 0x7f0e2814d890>
+2017-03-17 07:33:16,842:CONFIG:192.168.0.32:pushing file: /home/vagrant/Desktop/0331/opt/5th_interlink_cut/set/set_ospf_interface_passive.xml
+2017-03-17 07:33:16,842:CONFIG:192.168.0.32:taking lock
+2017-03-17 07:33:16,843:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:33:16,969:CONFIG:192.168.0.32:loading config
+2017-03-17 07:33:16,970:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:33:17,196:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:33:19,042:CONFIG:192.168.0.32:doing a commit-check, please be patient
+2017-03-17 07:33:19,043:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:33:22,282:CONFIG:192.168.0.32:committing change, please be patient
+2017-03-17 07:33:22,283:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:33:29,826:CONFIG:192.168.0.32:unlocking
+2017-03-17 07:33:29,826:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:33:29,942:CONFIG:192.168.0.32:change completed
+2017-03-17 07:33:29,943:ncclient.operations.rpc:Requesting 'CloseSession'
+2017-03-17 07:33:30,829:CONFIG:192.168.0.32:connecting to host: juniper@192.168.0.32:22
+2017-03-17 07:33:30,903:ncclient.transport.ssh:Connected (version 2.0, client OpenSSH_7.1)
+2017-03-17 07:33:31,336:ncclient.transport.ssh:Authentication (publickey) successful!
+2017-03-17 07:33:32,297:ncclient.transport.session:initialized: session-id=38240 | server_capabilities=<dictionary-keyiterator object at 0x7f5b04fbbc58>
+2017-03-17 07:33:32,297:CONFIG:192.168.0.32:taking lock
+2017-03-17 07:33:32,298:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:33:32,414:CONFIG:192.168.0.32:committing change, please be patient
+2017-03-17 07:33:32,415:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:33:39,281:CONFIG:192.168.0.32:change completed
+2017-03-17 07:33:39,281:CONFIG:192.168.0.32:unlocking
+2017-03-17 07:33:39,282:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:33:39,498:ncclient.operations.rpc:Requesting 'CloseSession'
+2017-03-17 07:33:40,172:CONFIG:192.168.0.32:connecting to host: juniper@192.168.0.32:830
+2017-03-17 07:33:40,235:ncclient.transport.ssh:Connected (version 2.0, client OpenSSH_7.1)
+2017-03-17 07:33:40,653:ncclient.transport.ssh:Authentication (publickey) successful!
+2017-03-17 07:33:41,668:ncclient.transport.session:initialized: session-id=38278 | server_capabilities=<dictionary-keyiterator object at 0x7f2a6ae37c58>
+2017-03-17 07:33:41,668:CONFIG:192.168.0.32:Getting cli output
+2017-03-17 07:33:41,671:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:33:41,801:ncclient.operations.rpc:Requesting 'CloseSession'
+2017-03-17 07:33:42,635:CONFIG:192.168.0.32:connecting to host: juniper@192.168.0.32:22
+2017-03-17 07:33:42,699:ncclient.transport.ssh:Connected (version 2.0, client OpenSSH_7.1)
+2017-03-17 07:33:43,130:ncclient.transport.ssh:Authentication (publickey) successful!
+2017-03-17 07:33:44,110:ncclient.transport.session:initialized: session-id=38283 | server_capabilities=<dictionary-keyiterator object at 0x7f0b95872940>
+2017-03-17 07:33:44,110:CONFIG:192.168.0.32:pushing file: /home/vagrant/Desktop/0331/opt/5th_interlink_cut/set/bgp_deactivate.xml
+2017-03-17 07:33:44,110:CONFIG:192.168.0.32:taking lock
+2017-03-17 07:33:44,111:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:33:44,233:CONFIG:192.168.0.32:loading config
+2017-03-17 07:33:44,234:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:33:44,459:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:33:46,190:CONFIG:192.168.0.32:doing a commit-check, please be patient
+2017-03-17 07:33:46,190:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:33:51,248:CONFIG:192.168.0.32:committing change, please be patient
+2017-03-17 07:33:51,248:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:34:01,200:CONFIG:192.168.0.32:unlocking
+2017-03-17 07:34:01,200:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:34:01,733:CONFIG:192.168.0.32:change completed
+2017-03-17 07:34:01,733:ncclient.operations.rpc:Requesting 'CloseSession'
+2017-03-17 07:34:02,720:CONFIG:192.168.0.32:connecting to host: juniper@192.168.0.32:22
+2017-03-17 07:34:02,783:ncclient.transport.ssh:Connected (version 2.0, client OpenSSH_7.1)
+2017-03-17 07:34:03,228:ncclient.transport.ssh:Authentication (publickey) successful!
+2017-03-17 07:34:04,227:ncclient.transport.session:initialized: session-id=38382 | server_capabilities=<dictionary-keyiterator object at 0x7fcc4d68ac58>
+2017-03-17 07:34:04,227:CONFIG:192.168.0.32:taking lock
+2017-03-17 07:34:04,228:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:34:04,299:CONFIG:192.168.0.32:committing change, please be patient
+2017-03-17 07:34:04,299:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:34:10,272:CONFIG:192.168.0.32:change completed
+2017-03-17 07:34:10,273:CONFIG:192.168.0.32:unlocking
+2017-03-17 07:34:10,273:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:34:10,590:ncclient.operations.rpc:Requesting 'CloseSession'
+2017-03-17 07:34:11,337:CONFIG:192.168.0.32:connecting to host: juniper@192.168.0.32:830
+2017-03-17 07:34:11,400:ncclient.transport.ssh:Connected (version 2.0, client OpenSSH_7.1)
+2017-03-17 07:34:11,831:ncclient.transport.ssh:Authentication (publickey) successful!
+2017-03-17 07:34:12,829:ncclient.transport.session:initialized: session-id=38420 | server_capabilities=<dictionary-keyiterator object at 0x7f0c683abc00>
+2017-03-17 07:34:12,829:CONFIG:192.168.0.32:Getting cli output
+2017-03-17 07:34:12,831:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:34:13,023:ncclient.operations.rpc:Requesting 'CloseSession'
+2017-03-17 07:46:32,028:CONFIG:192.168.0.32:connecting to host: juniper@192.168.0.32:830
+2017-03-17 07:46:32,092:ncclient.transport.ssh:Connected (version 2.0, client OpenSSH_7.1)
+2017-03-17 07:46:32,610:ncclient.transport.ssh:Authentication (publickey) successful!
+2017-03-17 07:46:33,624:ncclient.transport.session:initialized: session-id=40440 | server_capabilities=<dictionary-keyiterator object at 0x7f3fcdf02c58>
+2017-03-17 07:46:33,624:CONFIG:192.168.0.32:Getting cli output
+2017-03-17 07:46:33,626:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:46:33,704:ncclient.operations.rpc:Requesting 'CloseSession'
+2017-03-17 07:46:34,609:CONFIG:192.168.0.32:connecting to host: juniper@192.168.0.32:22
+2017-03-17 07:46:34,673:ncclient.transport.ssh:Connected (version 2.0, client OpenSSH_7.1)
+2017-03-17 07:46:35,110:ncclient.transport.ssh:Authentication (publickey) successful!
+2017-03-17 07:46:36,119:ncclient.transport.session:initialized: session-id=40445 | server_capabilities=<dictionary-keyiterator object at 0x7ff4243b8890>
+2017-03-17 07:46:36,119:CONFIG:192.168.0.32:pushing file: /home/vagrant/Desktop/0331/opt/5th_interlink_cut/set/set_ospf_interface_passive.xml
+2017-03-17 07:46:36,119:CONFIG:192.168.0.32:taking lock
+2017-03-17 07:46:36,120:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:46:36,187:CONFIG:192.168.0.32:loading config
+2017-03-17 07:46:36,188:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:46:36,463:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:46:38,057:CONFIG:192.168.0.32:doing a commit-check, please be patient
+2017-03-17 07:46:38,058:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:46:41,413:CONFIG:192.168.0.32:committing change, please be patient
+2017-03-17 07:46:41,414:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:46:48,524:CONFIG:192.168.0.32:unlocking
+2017-03-17 07:46:48,525:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:46:48,995:CONFIG:192.168.0.32:change completed
+2017-03-17 07:46:48,995:ncclient.operations.rpc:Requesting 'CloseSession'
+2017-03-17 07:46:49,751:CONFIG:192.168.0.32:connecting to host: juniper@192.168.0.32:22
+2017-03-17 07:46:49,814:ncclient.transport.ssh:Connected (version 2.0, client OpenSSH_7.1)
+2017-03-17 07:46:50,245:ncclient.transport.ssh:Authentication (publickey) successful!
+2017-03-17 07:46:51,209:ncclient.transport.session:initialized: session-id=40521 | server_capabilities=<dictionary-keyiterator object at 0x7fe1b22d6c58>
+2017-03-17 07:46:51,209:CONFIG:192.168.0.32:taking lock
+2017-03-17 07:46:51,210:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:46:51,332:CONFIG:192.168.0.32:committing change, please be patient
+2017-03-17 07:46:51,332:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:46:57,120:CONFIG:192.168.0.32:change completed
+2017-03-17 07:46:57,121:CONFIG:192.168.0.32:unlocking
+2017-03-17 07:46:57,122:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:46:57,389:ncclient.operations.rpc:Requesting 'CloseSession'
+2017-03-17 07:46:58,160:CONFIG:192.168.0.32:connecting to host: juniper@192.168.0.32:830
+2017-03-17 07:46:58,223:ncclient.transport.ssh:Connected (version 2.0, client OpenSSH_7.1)
+2017-03-17 07:46:58,648:ncclient.transport.ssh:Authentication (publickey) successful!
+2017-03-17 07:46:59,607:ncclient.transport.session:initialized: session-id=40559 | server_capabilities=<dictionary-keyiterator object at 0x7f5c38817c58>
+2017-03-17 07:46:59,607:CONFIG:192.168.0.32:Getting cli output
+2017-03-17 07:46:59,608:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:46:59,725:ncclient.operations.rpc:Requesting 'CloseSession'
+2017-03-17 07:47:00,585:CONFIG:192.168.0.32:connecting to host: juniper@192.168.0.32:22
+2017-03-17 07:47:00,650:ncclient.transport.ssh:Connected (version 2.0, client OpenSSH_7.1)
+2017-03-17 07:47:01,196:ncclient.transport.ssh:Authentication (publickey) successful!
+2017-03-17 07:47:02,199:ncclient.transport.session:initialized: session-id=40564 | server_capabilities=<dictionary-keyiterator object at 0x7f46d1cf5940>
+2017-03-17 07:47:02,200:CONFIG:192.168.0.32:pushing file: /home/vagrant/Desktop/0331/opt/5th_interlink_cut/set/bgp_deactivate.xml
+2017-03-17 07:47:02,200:CONFIG:192.168.0.32:taking lock
+2017-03-17 07:47:02,200:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:47:02,317:CONFIG:192.168.0.32:loading config
+2017-03-17 07:47:02,317:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:47:02,535:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:47:03,929:CONFIG:192.168.0.32:doing a commit-check, please be patient
+2017-03-17 07:47:03,930:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:47:09,031:CONFIG:192.168.0.32:committing change, please be patient
+2017-03-17 07:47:09,031:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:47:18,666:CONFIG:192.168.0.32:unlocking
+2017-03-17 07:47:18,667:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:47:19,238:CONFIG:192.168.0.32:change completed
+2017-03-17 07:47:19,238:ncclient.operations.rpc:Requesting 'CloseSession'
+2017-03-17 07:47:20,143:CONFIG:192.168.0.32:connecting to host: juniper@192.168.0.32:22
+2017-03-17 07:47:20,207:ncclient.transport.ssh:Connected (version 2.0, client OpenSSH_7.1)
+2017-03-17 07:47:20,870:ncclient.transport.ssh:Authentication (publickey) successful!
+2017-03-17 07:47:21,836:ncclient.transport.session:initialized: session-id=40663 | server_capabilities=<dictionary-keyiterator object at 0x7fe4400f1c58>
+2017-03-17 07:47:21,836:CONFIG:192.168.0.32:taking lock
+2017-03-17 07:47:21,838:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:47:21,962:CONFIG:192.168.0.32:committing change, please be patient
+2017-03-17 07:47:21,963:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:47:27,916:CONFIG:192.168.0.32:change completed
+2017-03-17 07:47:27,916:CONFIG:192.168.0.32:unlocking
+2017-03-17 07:47:27,916:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:47:28,240:ncclient.operations.rpc:Requesting 'CloseSession'
+2017-03-17 07:47:28,824:CONFIG:192.168.0.32:connecting to host: juniper@192.168.0.32:830
+2017-03-17 07:47:28,887:ncclient.transport.ssh:Connected (version 2.0, client OpenSSH_7.1)
+2017-03-17 07:47:29,324:ncclient.transport.ssh:Authentication (publickey) successful!
+2017-03-17 07:47:30,325:ncclient.transport.session:initialized: session-id=40701 | server_capabilities=<dictionary-keyiterator object at 0x7feb20f7fc00>
+2017-03-17 07:47:30,326:CONFIG:192.168.0.32:Getting cli output
+2017-03-17 07:47:30,327:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:47:30,560:ncclient.operations.rpc:Requesting 'CloseSession'
+2017-03-17 07:56:44,003:CONFIG:192.168.0.32:connecting to host: juniper@192.168.0.32:830
+2017-03-17 07:56:44,068:ncclient.transport.ssh:Connected (version 2.0, client OpenSSH_7.1)
+2017-03-17 07:56:44,510:ncclient.transport.ssh:Authentication (publickey) successful!
+2017-03-17 07:56:45,533:ncclient.transport.session:initialized: session-id=42721 | server_capabilities=<dictionary-keyiterator object at 0x7f8741005c58>
+2017-03-17 07:56:45,533:CONFIG:192.168.0.32:Getting cli output
+2017-03-17 07:56:45,536:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:56:45,664:ncclient.operations.rpc:Requesting 'CloseSession'
+2017-03-17 07:56:46,590:CONFIG:192.168.0.32:connecting to host: juniper@192.168.0.32:22
+2017-03-17 07:56:46,653:ncclient.transport.ssh:Connected (version 2.0, client OpenSSH_7.1)
+2017-03-17 07:56:47,091:ncclient.transport.ssh:Authentication (publickey) successful!
+2017-03-17 07:56:48,088:ncclient.transport.session:initialized: session-id=42726 | server_capabilities=<dictionary-keyiterator object at 0x7febcdec8890>
+2017-03-17 07:56:48,089:CONFIG:192.168.0.32:pushing file: /home/vagrant/Desktop/0331/opt/5th_interlink_cut/set/set_ospf_interface_passive.xml
+2017-03-17 07:56:48,089:CONFIG:192.168.0.32:taking lock
+2017-03-17 07:56:48,089:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:56:48,206:CONFIG:192.168.0.32:loading config
+2017-03-17 07:56:48,207:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:56:48,424:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:56:50,054:CONFIG:192.168.0.32:doing a commit-check, please be patient
+2017-03-17 07:56:50,055:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:56:53,303:CONFIG:192.168.0.32:committing change, please be patient
+2017-03-17 07:56:53,304:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:57:00,627:CONFIG:192.168.0.32:unlocking
+2017-03-17 07:57:00,627:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:57:01,096:CONFIG:192.168.0.32:change completed
+2017-03-17 07:57:01,096:ncclient.operations.rpc:Requesting 'CloseSession'
+2017-03-17 07:57:01,916:CONFIG:192.168.0.32:connecting to host: juniper@192.168.0.32:22
+2017-03-17 07:57:01,982:ncclient.transport.ssh:Connected (version 2.0, client OpenSSH_7.1)
+2017-03-17 07:57:02,405:ncclient.transport.ssh:Authentication (publickey) successful!
+2017-03-17 07:57:03,402:ncclient.transport.session:initialized: session-id=42802 | server_capabilities=<dictionary-keyiterator object at 0x7f5d02850c58>
+2017-03-17 07:57:03,403:CONFIG:192.168.0.32:taking lock
+2017-03-17 07:57:03,404:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:57:03,520:CONFIG:192.168.0.32:committing change, please be patient
+2017-03-17 07:57:03,521:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:57:09,305:CONFIG:192.168.0.32:change completed
+2017-03-17 07:57:09,305:CONFIG:192.168.0.32:unlocking
+2017-03-17 07:57:09,305:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:57:09,573:ncclient.operations.rpc:Requesting 'CloseSession'
+2017-03-17 07:57:10,321:CONFIG:192.168.0.32:connecting to host: juniper@192.168.0.32:830
+2017-03-17 07:57:10,386:ncclient.transport.ssh:Connected (version 2.0, client OpenSSH_7.1)
+2017-03-17 07:57:10,826:ncclient.transport.ssh:Authentication (publickey) successful!
+2017-03-17 07:57:11,846:ncclient.transport.session:initialized: session-id=42840 | server_capabilities=<dictionary-keyiterator object at 0x7f590a8b5c58>
+2017-03-17 07:57:11,846:CONFIG:192.168.0.32:Getting cli output
+2017-03-17 07:57:11,847:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:57:11,932:ncclient.operations.rpc:Requesting 'CloseSession'
+2017-03-17 07:57:12,949:CONFIG:192.168.0.32:connecting to host: juniper@192.168.0.32:22
+2017-03-17 07:57:13,014:ncclient.transport.ssh:Connected (version 2.0, client OpenSSH_7.1)
+2017-03-17 07:57:13,458:ncclient.transport.ssh:Authentication (publickey) successful!
+2017-03-17 07:57:14,450:ncclient.transport.session:initialized: session-id=42845 | server_capabilities=<dictionary-keyiterator object at 0x7f863e44e940>
+2017-03-17 07:57:14,450:CONFIG:192.168.0.32:pushing file: /home/vagrant/Desktop/0331/opt/5th_interlink_cut/set/bgp_deactivate.xml
+2017-03-17 07:57:14,450:CONFIG:192.168.0.32:taking lock
+2017-03-17 07:57:14,450:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:57:14,566:CONFIG:192.168.0.32:loading config
+2017-03-17 07:57:14,567:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:57:14,794:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:57:16,285:CONFIG:192.168.0.32:doing a commit-check, please be patient
+2017-03-17 07:57:16,285:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:57:21,709:CONFIG:192.168.0.32:committing change, please be patient
+2017-03-17 07:57:21,709:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:57:31,993:CONFIG:192.168.0.32:unlocking
+2017-03-17 07:57:31,994:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:57:32,563:CONFIG:192.168.0.32:change completed
+2017-03-17 07:57:32,563:ncclient.operations.rpc:Requesting 'CloseSession'
+2017-03-17 07:57:33,454:CONFIG:192.168.0.32:connecting to host: juniper@192.168.0.32:22
+2017-03-17 07:57:33,520:ncclient.transport.ssh:Connected (version 2.0, client OpenSSH_7.1)
+2017-03-17 07:57:34,186:ncclient.transport.ssh:Authentication (publickey) successful!
+2017-03-17 07:57:35,155:ncclient.transport.session:initialized: session-id=42944 | server_capabilities=<dictionary-keyiterator object at 0x7f70aef28c58>
+2017-03-17 07:57:35,155:CONFIG:192.168.0.32:taking lock
+2017-03-17 07:57:35,156:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:57:35,273:CONFIG:192.168.0.32:committing change, please be patient
+2017-03-17 07:57:35,273:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:57:41,770:CONFIG:192.168.0.32:change completed
+2017-03-17 07:57:41,770:CONFIG:192.168.0.32:unlocking
+2017-03-17 07:57:41,771:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:57:41,948:ncclient.operations.rpc:Requesting 'CloseSession'
+2017-03-17 07:57:42,750:CONFIG:192.168.0.32:connecting to host: juniper@192.168.0.32:830
+2017-03-17 07:57:42,816:ncclient.transport.ssh:Connected (version 2.0, client OpenSSH_7.1)
+2017-03-17 07:57:43,268:ncclient.transport.ssh:Authentication (publickey) successful!
+2017-03-17 07:57:44,275:ncclient.transport.session:initialized: session-id=42982 | server_capabilities=<dictionary-keyiterator object at 0x7f2d600c3c00>
+2017-03-17 07:57:44,276:CONFIG:192.168.0.32:Getting cli output
+2017-03-17 07:57:44,277:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 07:57:44,496:ncclient.operations.rpc:Requesting 'CloseSession'
+2017-03-17 08:06:58,917:CONFIG:192.168.0.32:connecting to host: juniper@192.168.0.32:830
+2017-03-17 08:06:58,983:ncclient.transport.ssh:Connected (version 2.0, client OpenSSH_7.1)
+2017-03-17 08:06:59,549:ncclient.transport.ssh:Authentication (publickey) successful!
+2017-03-17 08:07:00,518:ncclient.transport.session:initialized: session-id=44994 | server_capabilities=<dictionary-keyiterator object at 0x7fce4d2fec58>
+2017-03-17 08:07:00,519:CONFIG:192.168.0.32:Getting cli output
+2017-03-17 08:07:00,521:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:07:00,647:ncclient.operations.rpc:Requesting 'CloseSession'
+2017-03-17 08:07:01,495:CONFIG:192.168.0.32:connecting to host: juniper@192.168.0.32:22
+2017-03-17 08:07:01,559:ncclient.transport.ssh:Connected (version 2.0, client OpenSSH_7.1)
+2017-03-17 08:07:01,982:ncclient.transport.ssh:Authentication (publickey) successful!
+2017-03-17 08:07:02,950:ncclient.transport.session:initialized: session-id=44999 | server_capabilities=<dictionary-keyiterator object at 0x7fd4a29f2890>
+2017-03-17 08:07:02,951:CONFIG:192.168.0.32:pushing file: /home/vagrant/Desktop/0331/opt/5th_interlink_cut/set/set_ospf_interface_passive.xml
+2017-03-17 08:07:02,951:CONFIG:192.168.0.32:taking lock
+2017-03-17 08:07:02,951:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:07:03,086:CONFIG:192.168.0.32:loading config
+2017-03-17 08:07:03,087:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:07:03,304:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:07:05,136:CONFIG:192.168.0.32:doing a commit-check, please be patient
+2017-03-17 08:07:05,137:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:07:08,435:CONFIG:192.168.0.32:committing change, please be patient
+2017-03-17 08:07:08,436:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:07:15,688:CONFIG:192.168.0.32:unlocking
+2017-03-17 08:07:15,689:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:07:16,347:CONFIG:192.168.0.32:change completed
+2017-03-17 08:07:16,348:ncclient.operations.rpc:Requesting 'CloseSession'
+2017-03-17 08:07:17,225:CONFIG:192.168.0.32:connecting to host: juniper@192.168.0.32:22
+2017-03-17 08:07:17,289:ncclient.transport.ssh:Connected (version 2.0, client OpenSSH_7.1)
+2017-03-17 08:07:17,693:ncclient.transport.ssh:Authentication (publickey) successful!
+2017-03-17 08:07:18,663:ncclient.transport.session:initialized: session-id=45075 | server_capabilities=<dictionary-keyiterator object at 0x7f3d077abc58>
+2017-03-17 08:07:18,664:CONFIG:192.168.0.32:taking lock
+2017-03-17 08:07:18,665:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:07:18,807:CONFIG:192.168.0.32:committing change, please be patient
+2017-03-17 08:07:18,807:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:07:24,576:CONFIG:192.168.0.32:change completed
+2017-03-17 08:07:24,576:CONFIG:192.168.0.32:unlocking
+2017-03-17 08:07:24,577:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:07:24,920:ncclient.operations.rpc:Requesting 'CloseSession'
+2017-03-17 08:07:25,551:CONFIG:192.168.0.32:connecting to host: juniper@192.168.0.32:830
+2017-03-17 08:07:25,614:ncclient.transport.ssh:Connected (version 2.0, client OpenSSH_7.1)
+2017-03-17 08:07:26,046:ncclient.transport.ssh:Authentication (publickey) successful!
+2017-03-17 08:07:27,053:ncclient.transport.session:initialized: session-id=45113 | server_capabilities=<dictionary-keyiterator object at 0x7f5669179cb0>
+2017-03-17 08:07:27,054:CONFIG:192.168.0.32:Getting cli output
+2017-03-17 08:07:27,055:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:07:27,123:ncclient.operations.rpc:Requesting 'CloseSession'
+2017-03-17 08:07:27,903:CONFIG:192.168.0.32:connecting to host: juniper@192.168.0.32:22
+2017-03-17 08:07:27,966:ncclient.transport.ssh:Connected (version 2.0, client OpenSSH_7.1)
+2017-03-17 08:07:28,400:ncclient.transport.ssh:Authentication (publickey) successful!
+2017-03-17 08:07:29,352:ncclient.transport.session:initialized: session-id=45118 | server_capabilities=<dictionary-keyiterator object at 0x7f61eaea8940>
+2017-03-17 08:07:29,352:CONFIG:192.168.0.32:pushing file: /home/vagrant/Desktop/0331/opt/5th_interlink_cut/set/bgp_deactivate.xml
+2017-03-17 08:07:29,352:CONFIG:192.168.0.32:taking lock
+2017-03-17 08:07:29,353:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:07:29,479:CONFIG:192.168.0.32:loading config
+2017-03-17 08:07:29,481:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:07:29,728:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:07:30,960:CONFIG:192.168.0.32:doing a commit-check, please be patient
+2017-03-17 08:07:30,961:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:07:36,164:CONFIG:192.168.0.32:committing change, please be patient
+2017-03-17 08:07:36,164:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:07:46,942:CONFIG:192.168.0.32:unlocking
+2017-03-17 08:07:46,943:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:07:47,637:CONFIG:192.168.0.32:change completed
+2017-03-17 08:07:47,637:ncclient.operations.rpc:Requesting 'CloseSession'
+2017-03-17 08:07:48,467:CONFIG:192.168.0.32:connecting to host: juniper@192.168.0.32:22
+2017-03-17 08:07:48,532:ncclient.transport.ssh:Connected (version 2.0, client OpenSSH_7.1)
+2017-03-17 08:07:49,193:ncclient.transport.ssh:Authentication (publickey) successful!
+2017-03-17 08:07:50,214:ncclient.transport.session:initialized: session-id=45217 | server_capabilities=<dictionary-keyiterator object at 0x7fdc42436c58>
+2017-03-17 08:07:50,214:CONFIG:192.168.0.32:taking lock
+2017-03-17 08:07:50,215:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:07:50,283:CONFIG:192.168.0.32:committing change, please be patient
+2017-03-17 08:07:50,284:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:07:56,716:CONFIG:192.168.0.32:change completed
+2017-03-17 08:07:56,716:CONFIG:192.168.0.32:unlocking
+2017-03-17 08:07:56,716:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:07:57,181:ncclient.operations.rpc:Requesting 'CloseSession'
+2017-03-17 08:07:57,854:CONFIG:192.168.0.32:connecting to host: juniper@192.168.0.32:830
+2017-03-17 08:07:57,919:ncclient.transport.ssh:Connected (version 2.0, client OpenSSH_7.1)
+2017-03-17 08:07:58,368:ncclient.transport.ssh:Authentication (publickey) successful!
+2017-03-17 08:07:59,358:ncclient.transport.session:initialized: session-id=45255 | server_capabilities=<dictionary-keyiterator object at 0x7f76a1eedc00>
+2017-03-17 08:07:59,358:CONFIG:192.168.0.32:Getting cli output
+2017-03-17 08:07:59,360:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-03-17 08:07:59,579:ncclient.operations.rpc:Requesting 'CloseSession'

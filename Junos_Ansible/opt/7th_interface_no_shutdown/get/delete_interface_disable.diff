@@ -1,0 +1,9 @@
+
+[edit interfaces ge-1/0/0]
+-   disable;
+[edit interfaces ge-1/0/1]
+-   disable;
+[edit interfaces ge-1/0/4]
+-   disable;
+[edit interfaces ge-1/0/5]
+-   disable;

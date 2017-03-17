@@ -1,0 +1,216 @@
+<environment-information>
+<environment-item>
+<name>PEM 0</name>
+<class>Temp</class>
+<status>OK</status>
+</environment-item>
+<environment-item>
+<name>PEM 1</name>
+<class>Temp</class>
+<status>Absent</status>
+</environment-item>
+<environment-item>
+<name>RE 0 Intake</name>
+<class>Temp</class>
+<status>OK</status>
+<temperature celsius="34">34 degrees C / 93 degrees F</temperature>
+</environment-item>
+<environment-item>
+<name>RE 0 Front Exhaust</name>
+<class>Temp</class>
+<status>OK</status>
+<temperature celsius="37">37 degrees C / 98 degrees F</temperature>
+</environment-item>
+<environment-item>
+<name>RE 0 Rear Exhaust</name>
+<class>Temp</class>
+<status>OK</status>
+<temperature celsius="34">34 degrees C / 93 degrees F</temperature>
+</environment-item>
+<environment-item>
+<name>Routing Engine</name>
+<class>Temp</class>
+<status>OK</status>
+<temperature celsius="40">40 degrees C / 104 degrees F</temperature>
+</environment-item>
+<environment-item>
+<name>Routing Engine CPU</name>
+<class>Temp</class>
+<status>OK</status>
+<temperature celsius="53">53 degrees C / 127 degrees F</temperature>
+</environment-item>
+<environment-item>
+<name>TFEB 0 TBB PFE TSen</name>
+<class>Temp</class>
+<status>OK</status>
+<temperature celsius="40">40 degrees C / 104 degrees F</temperature>
+</environment-item>
+<environment-item>
+<name>TFEB 0 TBB PFE Chip</name>
+<class>Temp</class>
+<status>OK</status>
+<temperature celsius="59">59 degrees C / 138 degrees F</temperature>
+</environment-item>
+<environment-item>
+<name>TFEB 0 TBB PFE TSen</name>
+<class>Temp</class>
+<status>OK</status>
+<temperature celsius="40">40 degrees C / 104 degrees F</temperature>
+</environment-item>
+<environment-item>
+<name>TFEB 0 TBB PFE Chip</name>
+<class>Temp</class>
+<status>OK</status>
+<temperature celsius="59">59 degrees C / 138 degrees F</temperature>
+</environment-item>
+<environment-item>
+<name>TFEB 0 TBB PFE TSen</name>
+<class>Temp</class>
+<status>OK</status>
+<temperature celsius="40">40 degrees C / 104 degrees F</temperature>
+</environment-item>
+<environment-item>
+<name>TFEB 0 TBB PFE Chip</name>
+<class>Temp</class>
+<status>OK</status>
+<temperature celsius="60">60 degrees C / 140 degrees F</temperature>
+</environment-item>
+<environment-item>
+<name>TFEB 0 TBB PFE TSen</name>
+<class>Temp</class>
+<status>OK</status>
+<temperature celsius="40">40 degrees C / 104 degrees F</temperature>
+</environment-item>
+<environment-item>
+<name>TFEB 0 TBB PFE Chip</name>
+<class>Temp</class>
+<status>OK</status>
+<temperature celsius="60">60 degrees C / 140 degrees F</temperature>
+</environment-item>
+<environment-item>
+<name>TFEB 0 TBB PFE TSen</name>
+<class>Temp</class>
+<status>OK</status>
+<temperature celsius="40">40 degrees C / 104 degrees F</temperature>
+</environment-item>
+<environment-item>
+<name>TFEB 0 TBB PFE Chip</name>
+<class>Temp</class>
+<status>OK</status>
+<temperature celsius="59">59 degrees C / 138 degrees F</temperature>
+</environment-item>
+<environment-item>
+<name>TFEB 0 TBB PFE TSen</name>
+<class>Temp</class>
+<status>OK</status>
+<temperature celsius="40">40 degrees C / 104 degrees F</temperature>
+</environment-item>
+<environment-item>
+<name>TFEB 0 TBB PFE Chip</name>
+<class>Temp</class>
+<status>OK</status>
+<temperature celsius="60">60 degrees C / 140 degrees F</temperature>
+</environment-item>
+<environment-item>
+<name>TFEB 0 TBB PFE TSen</name>
+<class>Temp</class>
+<status>OK</status>
+<temperature celsius="40">40 degrees C / 104 degrees F</temperature>
+</environment-item>
+<environment-item>
+<name>TFEB 0 TBB PFE Chip</name>
+<class>Temp</class>
+<status>OK</status>
+<temperature celsius="60">60 degrees C / 140 degrees F</temperature>
+</environment-item>
+<environment-item>
+<name>TFEB 0 TBB PFE TSen</name>
+<class>Temp</class>
+<status>OK</status>
+<temperature celsius="40">40 degrees C / 104 degrees F</temperature>
+</environment-item>
+<environment-item>
+<name>TFEB 0 TBB PFE Chip</name>
+<class>Temp</class>
+<status>OK</status>
+<temperature celsius="59">59 degrees C / 138 degrees F</temperature>
+</environment-item>
+<environment-item>
+<name>TFEB 0 TBB PFE TSen</name>
+<class>Temp</class>
+<status>OK</status>
+<temperature celsius="40">40 degrees C / 104 degrees F</temperature>
+</environment-item>
+<environment-item>
+<name>TFEB 0 TBB PFE Chip</name>
+<class>Temp</class>
+<status>OK</status>
+<temperature celsius="59">59 degrees C / 138 degrees F</temperature>
+</environment-item>
+<environment-item>
+<name>TFEB 0 LU 0 TSen</name>
+<class>Temp</class>
+<status>OK</status>
+<temperature celsius="38">38 degrees C / 100 degrees F</temperature>
+</environment-item>
+<environment-item>
+<name>TFEB 0 LU 0 Chip</name>
+<class>Temp</class>
+<status>OK</status>
+<temperature celsius="56">56 degrees C / 132 degrees F</temperature>
+</environment-item>
+<environment-item>
+<name>TFEB 0 MQ 0 TSen</name>
+<class>Temp</class>
+<status>OK</status>
+<temperature celsius="38">38 degrees C / 100 degrees F</temperature>
+</environment-item>
+<environment-item>
+<name>TFEB 0 MQ 0 Chip</name>
+<class>Temp</class>
+<status>OK</status>
+<temperature celsius="48">48 degrees C / 118 degrees F</temperature>
+</environment-item>
+<environment-item>
+<name>TFEB 0 TBB PFE TSen</name>
+<class>Temp</class>
+<status>OK</status>
+<temperature celsius="40">40 degrees C / 104 degrees F</temperature>
+</environment-item>
+<environment-item>
+<name>TFEB 0 TBB PFE Chip</name>
+<class>Temp</class>
+<status>OK</status>
+<temperature celsius="59">59 degrees C / 138 degrees F</temperature>
+</environment-item>
+<environment-item>
+<name>Fan 1</name>
+<class>Fans</class>
+<status>OK</status>
+<comment>Spinning at intermediate-speed</comment>
+</environment-item>
+<environment-item>
+<name>Fan 2</name>
+<class>Fans</class>
+<status>OK</status>
+<comment>Spinning at intermediate-speed</comment>
+</environment-item>
+<environment-item>
+<name>Fan 3</name>
+<class>Fans</class>
+<status>OK</status>
+<comment>Spinning at intermediate-speed</comment>
+</environment-item>
+<environment-item>
+<name>Fan 4</name>
+<class>Fans</class>
+<status>OK</status>
+<comment>Spinning at intermediate-speed</comment>
+</environment-item>
+<environment-item>
+<name>Fan 5</name>
+<class>Fans</class>
+<status>OK</status>
+<comment>Spinning at intermediate-speed</comment>
+</environment-item>
+</environment-information>

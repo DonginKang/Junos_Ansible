@@ -1,0 +1,209 @@
+---
+- name: 2. 연동 OSPF passive
+  hosts: juniper
+  roles:
+  - Juniper.junos
+  connection: local
+  gather_facts: no
+
+  tasks:
+
+  ########################### Traffic Check #######################
+  - name: 2. 연동 OSPF passive
+    shell: cat ./opt/temp.xml
+
+  - name: 트래픽 확인 | ge-1/0/0   
+    junos_rpc:
+      host: 192.168.0.32
+      user: juniper
+      rpc: get-interface-information
+      kwargs: interface_name=ge-1/0/0
+      format: json
+      dest: ./opt/2nd_ospf_passive/get/get_interface_information.conf
+      logfile: ./opt/2nd_ospf_passive/get/ospf_passive.log      
+    register: junos
+  - name: 트래픽 확인 | ge-1/0/0 
+    debug: msg="{{junos.rpc_reply['interface-information'][0]['physical-interface'][0]['traffic-statistics'][0] | to_nice_json}}"
+
+  - name: 트래픽 확인 | ge-1/0/1
+    junos_rpc:
+      host: 192.168.0.32
+      user: juniper
+      rpc: get-interface-information
+      kwargs: interface_name=ge-1/0/1
+      format: json
+      dest: ./opt/2nd_ospf_passive/get/get_interface_information.conf
+      logfile: ./opt/2nd_ospf_passive/get/ospf_passive.log
+    register: junos
+  - name: 트래픽 확인 | ge-1/0/1
+    debug: msg="{{junos.rpc_reply['interface-information'][0]['physical-interface'][0]['traffic-statistics'][0]|to_nice_json}}"
+
+  - name: 트래픽 확인 | ge-1/0/4
+    junos_rpc:
+      host: 192.168.0.32
+      user: juniper
+      rpc: get-interface-information
+      kwargs: interface_name=ge-1/0/4
+      format: json
+      dest: ./opt/2nd_ospf_passive/get/get_interface_information.conf
+      logfile: ./opt/2nd_ospf_passive/get/ospf_passive.log
+    register: junos
+  - name: 트래픽 확인 | ge-1/0/4
+    debug: msg="{{junos.rpc_reply['interface-information'][0]['physical-interface'][0]['traffic-statistics'][0]|to_nice_json}}"
+
+  - name: 트래픽 확인 | ge-1/0/5
+    junos_rpc:
+      host: 192.168.0.32
+      user: juniper
+      rpc: get-interface-information
+      kwargs: interface_name=ge-1/0/5
+      format: json
+      dest: ./opt/2nd_ospf_passive/get/get_interface_information.conf
+      logfile: ./opt/2nd_ospf_passive/get/ospf_passive.log
+    register: junos
+  - name: 트래픽 확인 | ge-1/0/5
+    debug: msg="{{junos.rpc_reply['interface-information'][0]['physical-interface'][0]['traffic-statistics'][0]|to_nice_json}}"    
+
+ ########################### Show OSPF Neighbor #####################
+
+  - name: OSPF Neighbor 확인
+    junos_cli:
+      host: 192.168.0.32
+      user: juniper
+      cli: show ospf neighbor
+      format: xml
+      dest: ./opt/2nd_ospf_passive/get/show_ospf_neighbor.xml
+      logfile: ./opt/2nd_ospf_passive/get/ospf_passive.log
+  - name: OSPF Neighbor 확인
+    shell: cat ./opt/2nd_ospf_passive/get/show_ospf_neighbor.xml
+    register: out
+  - name: OSPF Neighbor 확인
+    debug: var=out.stdout_lines
+
+
+ ######################### Set OSPF Interface Passive #####################
+
+
+  - name: Set OSPF Interface Passive
+    tags: set-section
+    junos_install_config: host=192.168.0.32 user=juniper port=22
+     diffs_file="./opt/2nd_ospf_passive/get/ospf_passive.diff"
+     logfile="./opt/2nd_ospf_passive/get/ospf_passive.log"
+     file="./opt/2nd_ospf_passive/set/set_ospf_interface_passive.xml"
+     replace=yes
+
+  - name: Set OSPF Interface Passive
+    shell: cat ./opt/2nd_ospf_passive/get/ospf_passive.diff
+    register: out
+  - name: Diff
+    debug: var=out.stdout_lines
+
+  - name: COMMIT
+    junos_commit: host=192.168.0.32 user=juniper port=22
+     logfile="./opt/2nd_ospf_passive/get/ospf_passive.log"
+
+
+
+########################### Traffic Check #######################
+
+  - name: 트래픽 확인 | ge-1/0/0   
+    junos_rpc:
+      host: 192.168.0.32
+      user: juniper
+      rpc: get-interface-information
+      kwargs: interface_name=ge-1/0/0
+      format: json
+      dest: ./opt/2nd_ospf_passive/get/get_interface_information.conf
+      logfile: ./opt/2nd_ospf_passive/get/ospf_passive.log      
+    register: junos
+  - name: 트래픽 확인 | ge-1/0/0 
+    debug: msg="{{junos.rpc_reply['interface-information'][0]['physical-interface'][0]['traffic-statistics'][0]|to_nice_json}}"
+
+  - name: 트래픽 확인 | ge-1/0/1
+    junos_rpc:
+      host: 192.168.0.32
+      user: juniper
+      rpc: get-interface-information
+      kwargs: interface_name=ge-1/0/1
+      format: json
+      dest: ./opt/2nd_ospf_passive/get/get_interface_information.conf
+      logfile: ./opt/2nd_ospf_passive/get/ospf_passive.log
+    register: junos
+  - name: 트래픽 확인 | ge-1/0/1
+    debug: msg="{{junos.rpc_reply['interface-information'][0]['physical-interface'][0]['traffic-statistics'][0]|to_nice_json}}"
+
+  - name: 트래픽 확인 | ge-1/0/4
+    junos_rpc:
+      host: 192.168.0.32
+      user: juniper
+      rpc: get-interface-information
+      kwargs: interface_name=ge-1/0/4
+      format: json
+      dest: ./opt/2nd_ospf_passive/get/get_interface_information.conf
+      logfile: ./opt/2nd_ospf_passive/get/ospf_passive.log
+    register: junos
+  - name: 트래픽 확인 | ge-1/0/4
+    debug: msg="{{junos.rpc_reply['interface-information'][0]['physical-interface'][0]['traffic-statistics'][0]|to_nice_json}}"
+
+  - name: 트래픽 확인 | ge-1/0/5
+    junos_rpc:
+      host: 192.168.0.32
+      user: juniper
+      rpc: get-interface-information
+      kwargs: interface_name=ge-1/0/5
+      format: json
+      dest: ./opt/2nd_ospf_passive/get/get_interface_information.conf
+      logfile: ./opt/2nd_ospf_passive/get/ospf_passive.log
+    register: junos
+  - name: 트래픽 확인 | ge-1/0/5
+    debug: msg="{{junos.rpc_reply['interface-information'][0]['physical-interface'][0]['traffic-statistics'][0]|to_nice_json}}"    
+
+
+ ########################### Show OSPF Neighbor #####################
+
+  - name: OSPF Neighbor 확인
+    junos_cli:
+      host: 192.168.0.32
+      user: juniper
+      cli: show ospf neighbor
+      format: xml
+      dest: ./opt/2nd_ospf_passive/get/show_ospf_neighbor.xml
+      logfile: ./opt/2nd_ospf_passive/get/ospf_passive.log
+  - name: OSPF Neighbor 확인
+    shell: cat ./opt/2nd_ospf_passive/get/show_ospf_neighbor.xml
+    register: out
+  - name: OSPF Neighbor 확인
+    debug: var=out.stdout_lines
+
+
+ ###################### 계속 진행 or 롤백  #####################
+
+  - name: Confirm for continue to next step
+    pause: prompt="계속 진행 하시겠습니까? (y/n)"
+    register: yn
+
+  - name: Continue
+    debug: msg="다음 단계로 진행 하겠습니다"
+    when: yn.user_input == 'y'
+    run_once: true
+
+  - name: Rollback
+    junos_install_config: host=192.168.0.32 user=juniper port=22
+     file="./opt/1st_check/set/Backup_config.xml"
+     overwrite=yes
+    when: yn.user_input == 'n'
+
+  - name: COMMMIT
+    tags: commit
+    junos_commit: host=192.168.0.32 user=juniper port=22
+    when: yn.user_input == 'n'
+
+  - name: 원상복구가 되었으며 시나리오를 종료 합니다.
+    meta: end_play
+    when: yn.user_input == 'n'
+
+  - name: Continue
+    debug: msg="TEST"
+
+
+

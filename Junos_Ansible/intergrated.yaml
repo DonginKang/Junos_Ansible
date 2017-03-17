@@ -1,0 +1,1274 @@
+---
+- name: LG U+ 트래픽 절체 작업 절차서
+  hosts: juniper
+  roles:
+  - Juniper.junos
+  connection: local
+  gather_facts: no
+
+  tasks:
+########################## 1. 장비 상태 및 Routing 확인 #######################
+
+  - name: 1. 장비 상태 및 Routing 확인 
+    shell: cat ./opt/temp.xml
+
+  - name: "show chassis environment"
+    junos_cli:
+      host: 192.168.0.32
+      user: juniper
+      cli: show chassis environment
+      format: xml
+      dest: ./opt/1st_check/get/Show_Chassis_Enviroment.xml
+      logfile: ./opt/1st_check/get/1st_check.log
+
+  - name: "show chassis hardware"
+    junos_cli:
+      host: 192.168.0.32
+      user: juniper
+      cli: show chassis hardware
+      format: xml
+      dest: ./opt/1st_check/get/Show_Chassis_Hardware.xml
+      logfile: ./opt/1st_check/get/1st_check.log
+
+  - name: "show system processes extensive"
+    junos_cli:
+      host: 192.168.0.32
+      user: juniper
+      cli: show system processes extensive
+      format: text
+      dest: ./opt/1st_check/get/Show_Processes_Extensive.text
+      logfile: ./opt/1st_check/get/1st_check.log
+
+  - name: "show interface terse"
+    junos_cli:
+      host: 192.168.0.32
+      user: juniper
+      cli: show interface terse
+      format: xml
+      dest: ./opt/1st_check/get/Show_Interface_Terse.xml
+      logfile: ./opt/1st_check/get/1st_check.log
+
+  - name: "show route summary"
+    junos_cli:
+      host: 192.168.0.32
+      user: juniper
+      cli: show route summary
+      format: xml
+      dest: ./opt/1st_check/get/Show_Route_Summary.xml
+      logfile: ./opt/1st_check/get/1st_check.log
+
+  - name: "show bgp summary"
+    junos_cli:
+      host: 192.168.0.32
+      user: juniper
+      cli: show bgp summary
+      format: xml
+      dest: ./opt/1st_check/get/Show_BGP_Summary.xml
+      logfile: ./opt/1st_check/get/1st_check.log
+
+  - name: "show ospf neighbor"
+    junos_cli:
+      host: 192.168.0.32
+      user: juniper
+      cli: show ospf neighbor
+      format: xml
+      dest: ./opt/1st_check/get/Show_OSPF_Neighbor.xml
+      logfile: ./opt/1st_check/get/1st_check.log
+
+  - name: "Get Device Configuration"
+    junos_rpc:
+      host: 192.168.0.32
+      user: juniper
+      rpc: get-config
+      dest: ./opt/1st_check/set/Backup_config.xml
+      logfile: ./opt/1st_check/get/1st_check.log
+      format: xml
+
+
+  ########################### 2. 연동 OSPF passive #######################
+
+  ########################### Traffic Check #######################
+
+  - name: 2. 연동 OSPF passive
+    shell: cat ./opt/temp.xml
+
+  - name: 트래픽 확인 | ge-1/0/0   
+    junos_rpc:
+      host: 192.168.0.32
+      user: juniper
+      rpc: get-interface-information
+      kwargs: interface_name=ge-1/0/0
+      format: json
+      dest: ./opt/2nd_ospf_passive/get/get_interface_information.conf
+      logfile: ./opt/2nd_ospf_passive/get/ospf_passive.log      
+    register: junos
+  - name: 트래픽 확인 | ge-1/0/0 
+    debug: msg="{{junos.rpc_reply['interface-information'][0]['physical-interface'][0]['traffic-statistics'][0] | to_nice_json}}"
+
+  - name: 트래픽 확인 | ge-1/0/1
+    junos_rpc:
+      host: 192.168.0.32
+      user: juniper
+      rpc: get-interface-information
+      kwargs: interface_name=ge-1/0/1
+      format: json
+      dest: ./opt/2nd_ospf_passive/get/get_interface_information.conf
+      logfile: ./opt/2nd_ospf_passive/get/ospf_passive.log
+    register: junos
+  - name: 트래픽 확인 | ge-1/0/1
+    debug: msg="{{junos.rpc_reply['interface-information'][0]['physical-interface'][0]['traffic-statistics'][0]|to_nice_json}}"
+
+  - name: 트래픽 확인 | ge-1/0/4
+    junos_rpc:
+      host: 192.168.0.32
+      user: juniper
+      rpc: get-interface-information
+      kwargs: interface_name=ge-1/0/4
+      format: json
+      dest: ./opt/2nd_ospf_passive/get/get_interface_information.conf
+      logfile: ./opt/2nd_ospf_passive/get/ospf_passive.log
+    register: junos
+  - name: 트래픽 확인 | ge-1/0/4
+    debug: msg="{{junos.rpc_reply['interface-information'][0]['physical-interface'][0]['traffic-statistics'][0]|to_nice_json}}"
+
+  - name: 트래픽 확인 | ge-1/0/5
+    junos_rpc:
+      host: 192.168.0.32
+      user: juniper
+      rpc: get-interface-information
+      kwargs: interface_name=ge-1/0/5
+      format: json
+      dest: ./opt/2nd_ospf_passive/get/get_interface_information.conf
+      logfile: ./opt/2nd_ospf_passive/get/ospf_passive.log
+    register: junos
+  - name: 트래픽 확인 | ge-1/0/5
+    debug: msg="{{junos.rpc_reply['interface-information'][0]['physical-interface'][0]['traffic-statistics'][0]|to_nice_json}}"    
+
+ ########################### Show OSPF Neighbor #####################
+
+  - name: OSPF Neighbor 확인
+    junos_cli:
+      host: 192.168.0.32
+      user: juniper
+      cli: show ospf neighbor
+      format: xml
+      dest: ./opt/2nd_ospf_passive/get/show_ospf_neighbor.xml
+      logfile: ./opt/2nd_ospf_passive/get/ospf_passive.log
+  - name: OSPF Neighbor 확인
+    shell: cat ./opt/2nd_ospf_passive/get/show_ospf_neighbor.xml
+    register: out
+  - name: OSPF Neighbor 확인
+    debug: var=out.stdout_lines
+
+
+ ######################### Set OSPF Interface Passive #####################
+
+
+  - name: Set OSPF Interface Passive
+    tags: set-section
+    junos_install_config: host=192.168.0.32 user=juniper port=22
+     diffs_file="./opt/2nd_ospf_passive/get/ospf_passive.diff"
+     logfile="./opt/2nd_ospf_passive/get/ospf_passive.log"
+     file="./opt/2nd_ospf_passive/set/set_ospf_interface_passive.xml"
+     replace=yes
+
+  - name: Set OSPF Interface Passive
+    shell: cat ./opt/2nd_ospf_passive/get/ospf_passive.diff
+    register: out
+  - name: Diff
+    debug: var=out.stdout_lines
+
+  - name: COMMIT
+    junos_commit: host=192.168.0.32 user=juniper port=22
+     logfile="./opt/2nd_ospf_passive/get/ospf_passive.log"
+
+
+
+########################### Traffic Check #######################
+
+  - name: 트래픽 확인 | ge-1/0/0   
+    junos_rpc:
+      host: 192.168.0.32
+      user: juniper
+      rpc: get-interface-information
+      kwargs: interface_name=ge-1/0/0
+      format: json
+      dest: ./opt/2nd_ospf_passive/get/get_interface_information.conf
+      logfile: ./opt/2nd_ospf_passive/get/ospf_passive.log      
+    register: junos
+  - name: 트래픽 확인 | ge-1/0/0 
+    debug: msg="{{junos.rpc_reply['interface-information'][0]['physical-interface'][0]['traffic-statistics'][0]|to_nice_json}}"
+
+  - name: 트래픽 확인 | ge-1/0/1
+    junos_rpc:
+      host: 192.168.0.32
+      user: juniper
+      rpc: get-interface-information
+      kwargs: interface_name=ge-1/0/1
+      format: json
+      dest: ./opt/2nd_ospf_passive/get/get_interface_information.conf
+      logfile: ./opt/2nd_ospf_passive/get/ospf_passive.log
+    register: junos
+  - name: 트래픽 확인 | ge-1/0/1
+    debug: msg="{{junos.rpc_reply['interface-information'][0]['physical-interface'][0]['traffic-statistics'][0]|to_nice_json}}"
+
+  - name: 트래픽 확인 | ge-1/0/4
+    junos_rpc:
+      host: 192.168.0.32
+      user: juniper
+      rpc: get-interface-information
+      kwargs: interface_name=ge-1/0/4
+      format: json
+      dest: ./opt/2nd_ospf_passive/get/get_interface_information.conf
+      logfile: ./opt/2nd_ospf_passive/get/ospf_passive.log
+    register: junos
+  - name: 트래픽 확인 | ge-1/0/4
+    debug: msg="{{junos.rpc_reply['interface-information'][0]['physical-interface'][0]['traffic-statistics'][0]|to_nice_json}}"
+
+  - name: 트래픽 확인 | ge-1/0/5
+    junos_rpc:
+      host: 192.168.0.32
+      user: juniper
+      rpc: get-interface-information
+      kwargs: interface_name=ge-1/0/5
+      format: json
+      dest: ./opt/2nd_ospf_passive/get/get_interface_information.conf
+      logfile: ./opt/2nd_ospf_passive/get/ospf_passive.log
+    register: junos
+  - name: 트래픽 확인 | ge-1/0/5
+    debug: msg="{{junos.rpc_reply['interface-information'][0]['physical-interface'][0]['traffic-statistics'][0]|to_nice_json}}"    
+
+
+ ########################### Show OSPF Neighbor #####################
+
+  - name: OSPF Neighbor 확인
+    junos_cli:
+      host: 192.168.0.32
+      user: juniper
+      cli: show ospf neighbor
+      format: xml
+      dest: ./opt/2nd_ospf_passive/get/show_ospf_neighbor.xml
+      logfile: ./opt/2nd_ospf_passive/get/ospf_passive.log
+  - name: OSPF Neighbor 확인
+    shell: cat ./opt/2nd_ospf_passive/get/show_ospf_neighbor.xml
+    register: out
+  - name: OSPF Neighbor 확인
+    debug: var=out.stdout_lines
+
+
+ ###################### 계속 진행 or 롤백  #####################
+
+  - name: Confirm for continue to next step
+    pause: prompt="계속 진행 하시겠습니까? (y/n)"
+    register: yn
+
+  - name: Continue
+    debug: msg="다음 단계로 진행 하겠습니다"
+    when: yn.user_input == 'y'
+    run_once: true
+
+  - name: Rollback
+    junos_install_config: host=192.168.0.32 user=juniper port=22
+     file="./opt/1st_check/set/Backup_config.xml"
+     overwrite=yes
+    when: yn.user_input == 'n'
+
+  - name: COMMMIT
+    tags: commit
+    junos_commit: host=192.168.0.32 user=juniper port=22
+    when: yn.user_input == 'n'
+
+  - name: 원상복구가 되었으며 시나리오를 종료 합니다.
+    meta: end_play
+    when: yn.user_input == 'n'
+
+
+######################### 3. 연동 BGP deactive #########################
+
+##################  Show BGP Summary  ##################
+
+  - name: 3. 연동 BGP deactive
+    shell: cat ./opt/temp.xml
+
+  - name: Show BGP Summary
+    junos_cli:
+      host: 192.168.0.32
+      user: juniper
+      cli: show bgp summary
+      format: xml
+      dest: ./opt/3rd_bgp_deactive/get/show_bgp_summary.xml
+      logfile: ./opt/3rd_bgp_deactive/get/bgp_deactive.log
+  - name: Show BGP Summary
+    shell: cat ./opt/3rd_bgp_deactive/get/show_bgp_summary.xml
+    register: out
+  - name: Show BGP Summary
+    debug: var=out.stdout_lines
+
+   ################ Deactivate Bgp Neighbor #####################
+
+  - name: Deactivate Bgp Neighbor
+    junos_install_config: host=192.168.0.32 user=juniper port=22
+     diffs_file="./opt/3rd_bgp_deactive/get/bgp_deactivate.diff"
+     logfile="./opt/3rd_bgp_deactive/get/bgp_deactive.log"
+     file="./opt/3rd_bgp_deactive/set/deactivate_bgp_neighbor.xml"
+     replace=yes
+
+  - name: Deactivate Bgp Neighbor
+    shell: cat ./opt/3rd_bgp_deactive/get/bgp_deactivate.diff
+    register: out
+  - name: Diff
+    debug: var=out.stdout_lines
+
+  - name: COMMIT
+    tags: commit
+    junos_commit: host=192.168.0.32 user=juniper port=22
+     comment="commit of confirmation"
+     logfile="./opt/3rd_bgp_deactive/get/bgp_deactive.log"
+
+
+##################  Show BGP Summary  ##################
+
+  - name: Show BGP Summary
+    junos_cli:
+      host: 192.168.0.32
+      user: juniper
+      cli: show bgp summary
+      format: xml
+      dest: ./opt/3rd_bgp_deactive/get/show_bgp_summary.xml
+      logfile: ./opt/3rd_bgp_deactive/get/bgp_deactive.log
+  - name: Show BGP Summary
+    shell: cat ./opt/3rd_bgp_deactive/get/show_bgp_summary.xml
+    register: out
+  - name: Show BGP Summary
+    debug: var=out.stdout_lines
+
+ ###################### 계속 진행 or 롤백  #####################
+
+  - name: Confirm for continue to next step
+    pause: prompt="계속 진행 하시겠습니까? (y/n)"
+    register: yn
+
+  - name: Continue
+    debug: msg="다음 단계로 진행 하겠습니다"
+    when: yn.user_input == 'y'
+    run_once: true
+
+  - name: Rollback
+    junos_install_config: host=192.168.0.32 user=juniper port=22
+     file="./opt/1st_check/set/Backup_config.xml"
+     overwrite=yes
+    when: yn.user_input == 'n'
+
+  - name: COMMMIT
+    tags: commit
+    junos_commit: host=192.168.0.32 user=juniper port=22
+    when: yn.user_input == 'n'
+
+  - name: 원상복구가 되었으며 시나리오를 종료 합니다.
+    meta: end_play
+    when: yn.user_input == 'n'
+
+
+################ 4. 연동 Interface shutdown #################
+
+   ################ Set Interface Disable #####################
+
+  - name: 4. 연동 Interface shutdown
+    shell: cat ./opt/temp.xml
+
+  - name: Set Interface Disable
+    junos_install_config: host=192.168.0.32 user=juniper port=22
+     diffs_file="./opt/4th_interface_shutdown/get/interface_disable.diff"
+     logfile="./opt/4th_interface_shutdown/get/interface_disable.log"
+     file="./opt/4th_interface_shutdown/set/interface_disable.xml"
+     replace=yes
+
+  - name: Set Interface Disable
+    shell: cat ./opt/4th_interface_shutdown/get/interface_disable.diff
+    register: out
+  - name: Diff
+    debug: var=out.stdout_lines
+
+  - name: COMMIT
+    tags: commit
+    junos_commit: host=192.168.0.32 user=juniper port=22
+     comment="commit of confirmation"
+     logfile="./opt/4th_interface_shutdown/get/interface_disable.log"
+
+
+##################  Show Interfaces Descriptions  ##################
+
+  - name: Show Interfaces Descriptions
+    junos_cli:
+      host: 192.168.0.32
+      user: juniper
+      cli: show interfaces descriptions
+      format: xml
+      dest: ./opt/4th_interface_shutdown/get/show_interfaces.xml
+      logfile: ./opt/4th_interface_shutdown/get/interface_disable.log
+  - name: Show Interfaces Descriptions
+    shell: cat ./opt/4th_interface_shutdown/get/show_interfaces.xml
+    register: out
+  - name: Show Interfaces Descriptions
+    debug: var=out.stdout_lines
+
+
+ ###################### 계속 진행 or 롤백  #####################
+
+  - name: Confirm for continue to next step
+    pause: prompt="계속 진행 하시겠습니까? (y/n)"
+    register: yn
+
+  - name: Continue
+    debug: msg="다음 단계로 진행 하겠습니다"
+    when: yn.user_input == 'y'
+    run_once: true
+
+  - name: Rollback
+    junos_install_config: host=192.168.0.32 user=juniper port=22
+     file="./opt/1st_check/set/Backup_config.xml"
+     overwrite=yes
+    when: yn.user_input == 'n'
+
+  - name: COMMMIT
+    tags: commit
+    junos_commit: host=192.168.0.32 user=juniper port=22
+    when: yn.user_input == 'n'
+
+  - name: 원상복구가 되었으며 시나리오를 종료 합니다.
+    meta: end_play
+    when: yn.user_input == 'n'
+
+
+###################### 5. Interlink 절체 (OSPF/BGP/Link) ##############
+
+  - name: 5. Interlink 절체(OSPF/BGP/Link)
+    shell: cat ./opt/temp.xml
+
+  ################ Show OSPF Neighbor #####################
+
+  - name: Show OSPF Neighbor
+    junos_cli:
+      host: 192.168.0.32
+      user: juniper
+      cli: show ospf neighbor
+      format: xml
+      dest: ./opt/5th_interlink_cut/get/show_ospf_neighbor.xml
+      logfile: ./opt/5th_interlink_cut/get/interlink_cut.log
+  - name: Show OSPF Neighbor
+    shell: cat ./opt/5th_interlink_cut/get/show_ospf_neighbor.xml
+    register: out
+  - name: Show OSPF Neighbor
+    debug: var=out.stdout_lines
+
+
+ ################ SET OSPF Interface Passive #####################
+
+  - name: Set OSPF Interface Passive
+    junos_install_config: host=192.168.0.32 user=juniper port=22
+     diffs_file="./opt/5th_interlink_cut/get/ospf_interface_passive.diff"
+     logfile="./opt/5th_interlink_cut/get/interlink_cut.log"
+     file="./opt/5th_interlink_cut/set/set_ospf_interface_passive.xml"
+     replace=yes
+
+  - name: Set OSPF Passive
+    shell: cat ./opt/5th_interlink_cut/get/ospf_interface_passive.diff
+    register: out
+  - name: Diff
+    debug: var=out.stdout_lines
+
+  - name: COMMIT
+    tags: commit
+    junos_commit: host=192.168.0.32 user=juniper port=22
+     logfile="./opt/5th_interlink_cut/get/interlink_cut.log"
+
+
+  ################ Show OSPF Neighbor #####################
+
+  - name: Show OSPF Neighbor
+    junos_cli:
+      host: 192.168.0.32
+      user: juniper
+      cli: show ospf neighbor
+      format: xml
+      dest: ./opt/5th_interlink_cut/get/show_ospf_neighbor.xml
+      logfile: ./opt/5th_interlink_cut/get/interlink_cut.log
+  - name: Show OSPF Neighbor
+    shell: cat ./opt/5th_interlink_cut/get/show_ospf_neighbor.xml
+    register: out
+  - name: Show OSPF Neighbor
+    debug: var=out.stdout_lines
+
+
+
+   ################ Deactivate Bgp Neighbor & Interface Disable  #####################
+
+  - name: Deactivate Bgp Neighbor & Interface Disable
+    junos_install_config: host=192.168.0.32 user=juniper port=22
+     diffs_file="./opt/5th_interlink_cut/get/bgp_deactivate.diff"
+     logfile="./opt/5th_interlink_cut/get/interlink_cut.log"
+     file="./opt/5th_interlink_cut/set/bgp_deactivate.xml"
+     replace=yes
+
+  - name: Deactive Bgp Neighbor
+    shell: cat ./opt/5th_interlink_cut/get/bgp_deactivate.diff
+    register: out
+  - name: Diff
+    debug: var=out.stdout_lines
+
+  - name: COMMIT
+    tags: commit
+    junos_commit: host=192.168.0.32 user=juniper port=22
+     comment="commit of confirmation"
+     logfile="./opt/5th_interlink_cut/get/interlink_cut.log"
+
+
+  ######### Show interfaces descriptions | match "CORE#2"############
+
+  - name: Show interfaces descriptions | match "CORE#2"
+    junos_cli:
+      host: 192.168.0.32
+      user: juniper
+      cli: show interfaces descriptions
+      format: xml
+      dest: ./opt/5th_interlink_cut/get/show_interfaces_descriptions.xml
+      logfile: ./opt/5th_interlink_cut/get/interlink_cut.log
+  - name: Show interfaces descriptions | match "CORE#2"
+    shell: cat ./opt/5th_interlink_cut/get/show_interfaces_descriptions.xml
+    register: out
+  - name: Show interfaces descriptions | match "CORE#2"
+    debug: var=out.stdout_lines
+
+ ###################### 계속 진행 or 롤백  #####################
+
+  - name: Confirm for continue to next step
+    pause: prompt="계속 진행 하시겠습니까? (y/n)"
+    register: yn
+
+  - name: Continue
+    debug: msg="다음 단계로 진행 하겠습니다"
+    when: yn.user_input == 'y'
+    run_once: true
+
+  - name: Rollback
+    junos_install_config: host=192.168.0.32 user=juniper port=22
+     file="./opt/1st_check/set/Backup_config.xml"
+     overwrite=yes
+    when: yn.user_input == 'n'
+
+  - name: COMMMIT
+    tags: commit
+    junos_commit: host=192.168.0.32 user=juniper port=22
+    when: yn.user_input == 'n'
+
+  - name: 원상복구가 되었으며 시나리오를 종료 합니다.
+    meta: end_play
+    when: yn.user_input == 'n'
+
+
+
+ ################ 6. Interlink 원복 (OSPF/BGP/Link) #####################
+
+
+  - name: 6. Interlink 원복 (OSPF/BGP/Link)
+    shell: cat ./opt/temp.xml
+
+ ################ Delete Interface Disable #####################
+
+  - name: Delete Interface Disable
+    junos_install_config: host=192.168.0.32 user=juniper port=22
+     diffs_file="./opt/6th_interlink_rollback/get/delete_interface_disable.diff"
+     logfile="./opt/6th_interlink_rollback/get/interlink_rollback.log"
+     file="./opt/6th_interlink_rollback/set/delete_interface_disable.xml"
+     replace=yes
+
+  - name: Delete Interface Disable
+    shell: cat ./opt/6th_interlink_rollback/get/delete_interface_disable.diff
+    register: out
+  - name: Diff
+    debug: var=out.stdout_lines
+
+  - name: COMMIT
+    tags: commit
+    junos_commit: host=192.168.0.32 user=juniper port=22
+     logfile="./opt/6th_interlink_rollback/get/interlink_rollback.log"
+
+
+  ################ Ping Test #####################    
+
+  - name: Ping 21.1.1.2
+    junos_ping:
+      host=192.168.0.32
+      user=juniper
+      dest_ip=21.1.1.2
+      acceptable_packet_loss=20
+    register: junos
+  - debug: var=junos
+
+  - name: Ping 21.1.2.2
+    junos_ping:
+      host=192.168.0.32
+      user=juniper
+      dest_ip=21.1.2.2
+      acceptable_packet_loss=20
+    register: junos
+  - debug: var=junos
+
+ ################ SHOW Interface Descriptions #####################
+
+  - name: Show Interface Descriptions
+    junos_cli:
+      host: 192.168.0.32
+      user: juniper
+      cli: show interfaces descriptions
+      format: xml
+      dest: ./opt/6th_interlink_rollback/get/show_interfaces_descriptions.xml
+      logfile: ./opt/6th_interlink_rollback/get/interlink_rollback.log
+  - name: SHOW Interface Descriptions
+    shell: cat ./opt/6th_interlink_rollback/get/show_interfaces_descriptions.xml
+    register: out
+  - name: SHOW Interface Descriptions
+    debug: var=out.stdout_lines
+
+
+ ################ Activate Bgp Neighbor #####################
+
+
+  - name: Activate Bgp Neighbor
+    junos_install_config: host=192.168.0.32 user=juniper port=22
+     diffs_file="./opt/6th_interlink_rollback/get/activate_bgp_neighbor.diff"
+     logfile="./opt/6th_interlink_rollback/get/interlink_rollback.log"
+     file="./opt/6th_interlink_rollback/set/activate_bgp_neighbor.xml"
+     replace=yes
+
+  - name: Activate Bgp Neighbor
+    shell: cat ./opt/6th_interlink_rollback/get/activate_bgp_neighbor.diff
+    register: out
+  - name: Diff
+    debug: var=out.stdout_lines
+
+  - name: COMMIT
+    tags: commit
+    junos_commit: host=192.168.0.32 user=juniper port=22
+     logfile="./opt/6th_interlink_rollback/get/interlink_rollback.log"
+
+ ################ Show Bgp Summary #####################
+
+  - name: Show Bgp Summary
+    junos_cli:
+      host: 192.168.0.32
+      user: juniper
+      cli: show bgp summary
+      format: xml
+      dest: ./opt/6th_interlink_rollback/get/show_bgp_summary.xml
+      logfile: ./opt/6th_interlink_rollback/get/interlink_rollback.log
+  - name: Show Bgp Summary
+    shell: cat ./opt/6th_interlink_rollback/get/show_bgp_summary.xml
+    register: out
+  - name: Show Bgp Summary
+    debug: var=out.stdout_lines
+
+
+ ################ Delete OSPF Passive #####################
+
+
+  - name: Delete OSPF Passive
+    junos_install_config: host=192.168.0.32 user=juniper port=22
+     diffs_file="./opt/6th_interlink_rollback/get/delete_ospf_passive.diff"
+     logfile="./opt/6th_interlink_rollback/get/interlink_rollback.log"
+     file="./opt/6th_interlink_rollback/set/delete_ospf_interface_passive.xml"
+     replace=yes
+
+  - name: Delete OSPF Passive
+    shell: cat ./opt/6th_interlink_rollback/get/delete_ospf_passive.diff
+    register: out
+  - name: Diff
+    debug: var=out.stdout_lines
+
+  - name: COMMIT
+    tags: commit
+    junos_commit: host=192.168.0.32 user=juniper port=22
+     logfile="./opt/6th_interlink_rollback/get/interlink_rollback.log"
+
+
+ ################ Show OSPF Neighbor #####################
+
+  - name: Show OSPF Neighbor
+    junos_cli:
+      host: 192.168.0.32
+      user: juniper
+      cli: show ospf neighbor
+      format: xml
+      dest: ./opt/6th_interlink_rollback/get/show_ospf_neighbor.xml
+      logfile: ./opt/6th_interlink_rollback/get/interlink_rollback.log
+  - name: Show OSPF Neighbor
+    shell: cat ./opt/6th_interlink_rollback/get/show_ospf_neighbor.xml
+    register: out
+  - name: Show OSPF Neighbor
+    debug: var=out.stdout_lines
+
+ ###################### 계속 진행 or 롤백  #####################
+
+  - name: Confirm for continue to next step
+    pause: prompt="계속 진행 하시겠습니까? (y/n)"
+    register: yn
+
+  - name: Continue
+    debug: msg="다음 단계로 진행 하겠습니다"
+    when: yn.user_input == 'y'
+    run_once: true
+
+  - name: Rollback
+    junos_install_config: host=192.168.0.32 user=juniper port=22
+     file="./opt/1st_check/set/Backup_config.xml"
+     overwrite=yes
+    when: yn.user_input == 'n'
+
+  - name: COMMMIT
+    tags: commit
+    junos_commit: host=192.168.0.32 user=juniper port=22
+    when: yn.user_input == 'n'
+
+
+######################### 7. 연동 Interface no shutdown ##################
+
+  - name: 7. 연동 interface no shutdown
+    shell: cat ./opt/temp.xml
+
+
+################### Delete Interface Disable #########################
+
+  - name: Delete Interface Disable
+    junos_install_config: host=192.168.0.32 user=juniper port=22
+     diffs_file="./opt/7th_interface_no_shutdown/get/delete_interface_disable.diff"
+     logfile="./opt/7th_interface_no_shutdown/get/interface_noshut.log"
+     file="./opt/7th_interface_no_shutdown/set/interface_disable.xml"
+     replace=yes
+
+  - name: Delete Interface Disable
+    shell: cat ./opt/7th_interface_no_shutdown/get/delete_interface_disable.diff
+    register: out
+  - name: Diff
+    debug: var=out.stdout_lines
+
+  - name: COMMIT
+    tags: commit
+    junos_commit: host=192.168.0.32 user=juniper port=22
+     logfile="./opt/7th_interface_no_shutdown/get/interface_noshut.log"
+
+
+ ################ SHOW Interface Descriptions #####################
+
+  - name: SHOW Interface Descriptions
+    junos_cli:
+      host: 192.168.0.32
+      user: juniper
+      cli: show interfaces descriptions
+      format: xml
+      dest: ./opt/7th_interface_no_shutdown/get/show_interfaces_descriptions.xml
+      logfile: ./opt/7th_interface_no_shutdown/get/interface_noshut.log
+  - name: SHOW Interface Descriptions
+    shell: cat ./opt/7th_interface_no_shutdown/get/show_interfaces_descriptions.xml
+    register: out
+  - name: SHOW Interface Descriptions
+    debug: var=out.stdout_lines
+
+
+  ################ Ping Test #####################    
+
+  - name: Ping 10.1.1.1
+    junos_ping:
+      host=192.168.0.32
+      user=juniper
+      dest_ip=10.1.1.1
+      acceptable_packet_loss=20
+    register: junos
+  - debug: var=junos
+
+  - name: Ping 10.1.2.1
+    junos_ping:
+      host=192.168.0.32
+      user=juniper
+      dest_ip=10.1.2.1
+      acceptable_packet_loss=20
+    register: junos
+  - debug: var=junos
+
+  - name: Ping 30.1.1.2
+    junos_ping:
+      host=192.168.0.32
+      user=juniper
+      dest_ip=30.1.1.2
+      acceptable_packet_loss=20
+    register: junos
+  - debug: var=junos
+
+  - name: Ping 30.1.2.2
+    junos_ping:
+      host=192.168.0.32
+      user=juniper
+      dest_ip=30.1.2.2
+      acceptable_packet_loss=20
+    register: junos
+  - debug: var=junos
+
+ ###################### 계속 진행 or 롤백  #####################
+
+  - name: Confirm for continue to next step
+    pause: prompt="계속 진행 하시겠습니까? (y/n)"
+    register: yn
+
+  - name: Continue
+    debug: msg="다음 단계로 진행 하겠습니다"
+    when: yn.user_input == 'y'
+    run_once: true
+
+  - name: Rollback
+    junos_install_config: host=192.168.0.32 user=juniper port=22
+     file="./opt/1st_check/set/Backup_config.xml"
+     overwrite=yes
+    when: yn.user_input == 'n'
+
+  - name: COMMMIT
+    tags: commit
+    junos_commit: host=192.168.0.32 user=juniper port=22
+    when: yn.user_input == 'n'
+
+  - name: 원상복구가 되었으며 시나리오를 종료 합니다.
+    meta: end_play
+    when: yn.user_input == 'n'
+
+
+
+################# 8. 연동 BGP active ###############################
+
+  - name: 8. 연동 BGP active
+    shell: cat ./opt/temp.xml
+
+
+ ################ Show BGP Summary #####################
+
+  - name: Show BGP Summary
+    junos_cli:
+      host: 192.168.0.32
+      user: juniper
+      cli: show bgp summary
+      format: xml
+      dest: ./opt/8th_bgp_active/get/show_bgp_summary.xml
+      logfile: ./opt/8th_bgp_active/get/bgp_active.log
+  - name: Show BGP Summary
+    shell: cat ./opt/8th_bgp_active/get/show_bgp_summary.xml
+    register: out
+  - name: Show BGP Summary
+    debug: var=out.stdout_lines    
+
+################### Activate BGP Neighbor #########################
+
+  - name: Activate BGP Neighbor
+    junos_install_config: host=192.168.0.32 user=juniper port=22
+     diffs_file="./opt/8th_bgp_active/get/activate_BGP_neighbor.diff"
+     logfile="./opt/8th_bgp_active/get/bgp_active.log"
+     file="./opt/8th_bgp_active/set/activate_bgp_neighbor.xml"
+     replace=yes
+
+  - name: Activate BGP Neighbor
+    shell: cat ./opt/8th_bgp_active/get/activate_BGP_neighbor.diff
+    register: out
+  - name: Diff
+    debug: var=out.stdout_lines
+
+  - name: COMMIT
+    tags: commit
+    junos_commit: host=192.168.0.32 user=juniper port=22
+     logfile="./opt/8th_bgp_active/get/bgp_active.log"
+
+ ################ Show BGP Summary #####################
+
+  - name: Show BGP Summary
+    junos_cli:
+      host: 192.168.0.32
+      user: juniper
+      cli: show bgp summary
+      format: xml
+      dest: ./opt/8th_bgp_active/get/show_bgp_summary.xml
+      logfile: ./opt/8th_bgp_active/get/bgp_active.log
+  - name: Show BGP Summary
+    shell: cat ./opt/8th_bgp_active/get/show_bgp_summary.xml
+    register: out
+  - name: Show BGP Summary
+    debug: var=out.stdout_lines  
+
+
+ ###################### 계속 진행 or 롤백  #####################
+
+  - name: Confirm for continue to next step
+    pause: prompt="계속 진행 하시겠습니까? (y/n)"
+    register: yn
+
+  - name: Continue
+    debug: msg="다음 단계로 진행 하겠습니다"
+    when: yn.user_input == 'y'
+    run_once: true
+
+  - name: Rollback
+    junos_install_config: host=192.168.0.32 user=juniper port=22
+     file="./opt/1st_check/set/Backup_config.xml"
+     overwrite=yes
+    when: yn.user_input == 'n'
+
+  - name: COMMMIT
+    tags: commit
+    junos_commit: host=192.168.0.32 user=juniper port=22
+    when: yn.user_input == 'n'
+
+  - name: 원상복구가 되었으며 시나리오를 종료 합니다.
+    meta: end_play
+    when: yn.user_input == 'n'
+
+
+
+############################# 9. 연동 OSPF passive 삭제 #################
+  - name: 9. 연동 OSPF passive 삭제
+    shell: cat ./opt/temp.xml
+
+############################# 트래픽 확인 ###########################
+
+  - name: 트래픽 확인 | ge-1/0/0   
+    junos_rpc:
+      host: 192.168.0.32
+      user: juniper
+      rpc: get-interface-information
+      kwargs: interface_name=ge-1/0/0
+      format: json
+      dest: ./opt/9th_delete_ospf_passive/get/get_interface_information.conf
+      logfile: ./opt/9th_delete_ospf_passive/get/delete_ospf_passive.log      
+    register: junos
+  - name: 트래픽 확인 | ge-1/0/0 
+    debug: msg="{{junos.rpc_reply['interface-information'][0]['physical-interface'][0]['traffic-statistics'][0] | to_nice_json}}"
+
+  - name: 트래픽 확인 | ge-1/0/1
+    junos_rpc:
+      host: 192.168.0.32
+      user: juniper
+      rpc: get-interface-information
+      kwargs: interface_name=ge-1/0/1
+      format: json
+      dest: ./opt/9th_delete_ospf_passive/get/get_interface_information.conf
+      logfile: ./opt/9th_delete_ospf_passive/get/delete_ospf_passive.log
+    register: junos
+  - name: 트래픽 확인 | ge-1/0/1
+    debug: msg="{{junos.rpc_reply['interface-information'][0]['physical-interface'][0]['traffic-statistics'][0]|to_nice_json}}"
+
+  - name: 트래픽 확인 | ge-1/0/4
+    junos_rpc:
+      host: 192.168.0.32
+      user: juniper
+      rpc: get-interface-information
+      kwargs: interface_name=ge-1/0/4
+      format: json
+      dest: ./opt/9th_delete_ospf_passive/get/get_interface_information.conf
+      logfile: ./opt/9th_delete_ospf_passive/get/delete_ospf_passive.log
+    register: junos
+  - name: 트래픽 확인 | ge-1/0/4
+    debug: msg="{{junos.rpc_reply['interface-information'][0]['physical-interface'][0]['traffic-statistics'][0]|to_nice_json}}"
+
+  - name: 트래픽 확인 | ge-1/0/5
+    junos_rpc:
+      host: 192.168.0.32
+      user: juniper
+      rpc: get-interface-information
+      kwargs: interface_name=ge-1/0/5
+      format: json
+      dest: ./opt/9th_delete_ospf_passive/get/get_interface_information.conf
+      logfile: ./opt/9th_delete_ospf_passive/get/delete_ospf_passive.log
+    register: junos
+  - name: 트래픽 확인 | ge-1/0/5
+    debug: msg="{{junos.rpc_reply['interface-information'][0]['physical-interface'][0]['traffic-statistics'][0]|to_nice_json}}"
+
+ ########################### Show OSPF Neighbor #####################
+
+  - name: OSPF Neighbor 확인
+    junos_cli:
+      host: 192.168.0.32
+      user: juniper
+      cli: show ospf neighbor
+      format: xml
+      dest: ./opt/9th_delete_ospf_passive/get/show_ospf_neighbor.xml
+      logfile: ./opt/9th_delete_ospf_passive/get/delete_ospf_passive.log
+  - name: OSPF Neighbor 확인
+    shell: cat ./opt/9th_delete_ospf_passive/get/show_ospf_neighbor.xml
+    register: out
+  - name: OSPF Neighbor 확인
+    debug: var=out.stdout_lines
+
+
+ ################ Delete OSPF Interface Passive #####################
+
+
+  - name: Delete OSPF Interface Passive
+    tags: set-section
+    junos_install_config: host=192.168.0.32 user=juniper port=22
+     comment="section of configuration"
+     diffs_file="./opt/9th_delete_ospf_passive/get/delete_ospf_passive.diff"
+     logfile="./opt/9th_delete_ospf_passive/get/delete_ospf_passive.log"
+     file="./opt/9th_delete_ospf_passive/set/delete_ospf_passive.xml"
+     replace=yes
+
+  - name: Delete OSPF Interface Passive
+    shell: cat ./opt/9th_delete_ospf_passive/get/delete_ospf_passive.diff
+    register: out
+  - name: Diff
+    debug: var=out.stdout_lines
+
+  - name: COMMIT
+    tags: commit
+    junos_commit: host=192.168.0.32 user=juniper port=22
+     logfile="./opt/9th_delete_ospf_passive/get/delete_ospf_passive.log"
+
+
+
+############################# 트래픽 확인 ###########################
+
+  - name: 트래픽 확인 | ge-1/0/0   
+    junos_rpc:
+      host: 192.168.0.32
+      user: juniper
+      rpc: get-interface-information
+      kwargs: interface_name=ge-1/0/0
+      format: json
+      dest: ./opt/9th_delete_ospf_passive/get/get_interface_information.conf
+      logfile: ./opt/9th_delete_ospf_passive/get/delete_ospf_passive.log      
+    register: junos
+  - name: 트래픽 확인 | ge-1/0/0 
+    debug: msg="{{junos.rpc_reply['interface-information'][0]['physical-interface'][0]['traffic-statistics'][0] | to_nice_json}}"
+
+  - name: 트래픽 확인 | ge-1/0/1
+    junos_rpc:
+      host: 192.168.0.32
+      user: juniper
+      rpc: get-interface-information
+      kwargs: interface_name=ge-1/0/1
+      format: json
+      dest: ./opt/9th_delete_ospf_passive/get/get_interface_information.conf
+      logfile: ./opt/9th_delete_ospf_passive/get/delete_ospf_passive.log
+    register: junos
+  - name: 트래픽 확인 | ge-1/0/1
+    debug: msg="{{junos.rpc_reply['interface-information'][0]['physical-interface'][0]['traffic-statistics'][0]|to_nice_json}}"
+
+  - name: 트래픽 확인 | ge-1/0/4
+    junos_rpc:
+      host: 192.168.0.32
+      user: juniper
+      rpc: get-interface-information
+      kwargs: interface_name=ge-1/0/4
+      format: json
+      dest: ./opt/9th_delete_ospf_passive/get/get_interface_information.conf
+      logfile: ./opt/9th_delete_ospf_passive/get/delete_ospf_passive.log
+    register: junos
+  - name: 트래픽 확인 | ge-1/0/4
+    debug: msg="{{junos.rpc_reply['interface-information'][0]['physical-interface'][0]['traffic-statistics'][0]|to_nice_json}}"
+
+  - name: 트래픽 확인 | ge-1/0/5
+    junos_rpc:
+      host: 192.168.0.32
+      user: juniper
+      rpc: get-interface-information
+      kwargs: interface_name=ge-1/0/5
+      format: json
+      dest: ./opt/9th_delete_ospf_passive/get/get_interface_information.conf
+      logfile: ./opt/9th_delete_ospf_passive/get/delete_ospf_passive.log
+    register: junos
+  - name: 트래픽 확인 | ge-1/0/5
+    debug: msg="{{junos.rpc_reply['interface-information'][0]['physical-interface'][0]['traffic-statistics'][0]|to_nice_json}}"
+
+
+ ########################### Show OSPF Neighbor #####################
+
+  - name: OSPF Neighbor 확인
+    junos_cli:
+      host: 192.168.0.32
+      user: juniper
+      cli: show ospf neighbor
+      format: xml
+      dest: ./opt/9th_delete_ospf_passive/get/show_ospf_neighbor.xml
+      logfile: ./opt/9th_delete_ospf_passive/get/delete_ospf_passive.log
+  - name: OSPF Neighbor 확인
+    shell: cat ./opt/9th_delete_ospf_passive/get/show_ospf_neighbor.xml
+    register: out
+  - name: OSPF Neighbor 확인
+    debug: var=out.stdout_lines
+
+ ###################### 계속 진행 or 롤백  #####################
+
+  - name: Confirm for continue to next step
+    pause: prompt="계속 진행 하시겠습니까? (y/n)"
+    register: yn
+
+  - name: Continue
+    debug: msg="다음 단계로 진행 하겠습니다"
+    when: yn.user_input == 'y'
+    run_once: true
+
+  - name: Rollback
+    junos_install_config: host=192.168.0.32 user=juniper port=22
+     file="./opt/1st_check/set/Backup_config.xml"
+     overwrite=yes
+    when: yn.user_input == 'n'
+
+  - name: COMMMIT
+    tags: commit
+    junos_commit: host=192.168.0.32 user=juniper port=22
+    when: yn.user_input == 'n'
+
+  - name: 원상복구가 되었으며 시나리오를 종료 합니다.
+    meta: end_play
+    when: yn.user_input == 'n'
+
+################### 10. 작업후 모니터링 #############################
+
+  - name: 10. 작업 후 모니터링
+    shell: cat ./opt/temp.xml
+
+  - name: "show chassis environment"
+    junos_cli:
+      host: 192.168.0.32
+      user: juniper
+      cli: show chassis environment
+      format: xml
+      dest: ./opt/10th_monitoring/get/Show_Chassis_Enviroment.xml
+      logfile: ./opt/10th_monitoring/get/10th_monitoring.log
+
+  - name: "show chassis hardware"
+    junos_cli:
+      host: 192.168.0.32
+      user: juniper
+      cli: show chassis hardware
+      format: xml
+      dest: ./opt/10th_monitoring/get/Show_Chassis_Hardware.xml
+      logfile: ./opt/10th_monitoring/get/10th_monitoring.log
+
+  - name: "show system processes extensive"
+    junos_cli:
+      host: 192.168.0.32
+      user: juniper
+      cli: show system processes extensive
+      format: text
+      dest: ./opt/10th_monitoring/get/Show_Processes_Extensive.text
+      logfile: ./opt/10th_monitoring/get/10th_monitoring.log
+
+  - name: "show interface terse"
+    junos_cli:
+      host: 192.168.0.32
+      user: juniper
+      cli: show interface terse
+      format: xml
+      dest: ./opt/10th_monitoring/get/Show_Interface_Terse.xml
+      logfile: ./opt/10th_monitoring/get/10th_monitoring.log
+
+  - name: "show route summary"
+    junos_cli:
+      host: 192.168.0.32
+      user: juniper
+      cli: show route summary
+      format: xml
+      dest: ./opt/10th_monitoring/get/Show_Route_Summary.xml
+      logfile: ./opt/10th_monitoring/get/10th_monitoring.log
+
+  - name: "show bgp summary"
+    junos_cli:
+      host: 192.168.0.32
+      user: juniper
+      cli: show bgp summary
+      format: xml
+      dest: ./opt/10th_monitoring/get/Show_BGP_Summary.xml
+      logfile: ./opt/10th_monitoring/get/10th_monitoring.log
+
+  - name: "show ospf neighbor"
+    junos_cli:
+      host: 192.168.0.32
+      user: juniper
+      cli: show ospf neighbor
+      format: xml
+      dest: ./opt/10th_monitoring/get/Show_OSPF_Neighbor.xml
+      logfile: ./opt/10th_monitoring/get/10th_monitoring.log
+
+
+############################# 최종 트래픽 확인 ###########################
+
+  - name: 트래픽 확인 | ge-1/0/0   
+    junos_rpc:
+      host: 192.168.0.32
+      user: juniper
+      rpc: get-interface-information
+      kwargs: interface_name=ge-1/0/0
+      format: json
+      dest: ./opt/10th_monitoring/get/get_interface_information.conf
+      logfile: ./opt/10th_monitoring/get/10th_monitoring.log      
+    register: junos
+  - name: 트래픽 확인 | ge-1/0/0 
+    debug: msg="{{junos.rpc_reply['interface-information'][0]['physical-interface'][0]['traffic-statistics'][0] | to_nice_json}}"
+
+  - name: 트래픽 확인 | ge-1/0/1
+    junos_rpc:
+      host: 192.168.0.32
+      user: juniper
+      rpc: get-interface-information
+      kwargs: interface_name=ge-1/0/1
+      format: json
+      dest: ./opt/10th_monitoring/get/get_interface_information.conf
+      logfile: ./opt/10th_monitoring/get/10th_monitoring.log
+    register: junos
+  - name: 트래픽 확인 | ge-1/0/1
+    debug: msg="{{junos.rpc_reply['interface-information'][0]['physical-interface'][0]['traffic-statistics'][0]|to_nice_json}}"
+
+  - name: 트래픽 확인 | ge-1/0/4
+    junos_rpc:
+      host: 192.168.0.32
+      user: juniper
+      rpc: get-interface-information
+      kwargs: interface_name=ge-1/0/4
+      format: json
+      dest: ./opt/10th_monitoring/get/get_interface_information.conf
+      logfile: ./opt/10th_monitoring/get/10th_monitoring.log
+    register: junos
+  - name: 트래픽 확인 | ge-1/0/4
+    debug: msg="{{junos.rpc_reply['interface-information'][0]['physical-interface'][0]['traffic-statistics'][0]|to_nice_json}}"
+
+  - name: 트래픽 확인 | ge-1/0/5
+    junos_rpc:
+      host: 192.168.0.32
+      user: juniper
+      rpc: get-interface-information
+      kwargs: interface_name=ge-1/0/5
+      format: json
+      dest: ./opt/10th_monitoring/get/get_interface_information.conf
+      logfile: ./opt/10th_monitoring/get/10th_monitoring.log
+    register: junos
+  - name: 트래픽 확인 | ge-1/0/5
+    debug: msg="{{junos.rpc_reply['interface-information'][0]['physical-interface'][0]['traffic-statistics'][0]|to_nice_json}}"
+
+ ###################### 계속 진행 or 롤백  #####################
+
+  - name: Confirm for continue to next step
+    pause: prompt="시나리오를 마무리 하겠습니다. (y/n)"
+    register: yn
+
+  - name: Continue
+    debug: msg="시나리오가 종료 되었습니다."
+    when: yn.user_input == 'y'
+    run_once: true
+
+  - name: Rollback
+    junos_install_config: host=192.168.0.32 user=juniper port=22
+     file="./opt/1st_check/set/Backup_config.xml"
+     overwrite=yes
+    when: yn.user_input == 'n'
+
+  - name: COMMMIT
+    tags: commit
+    junos_commit: host=192.168.0.32 user=juniper port=22
+    when: yn.user_input == 'n'
+
+  - name: 원상복구가 되었으며 시나리오를 종료 합니다.
+    meta: end_play
+    when: yn.user_input == 'n'

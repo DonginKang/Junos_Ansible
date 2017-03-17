@@ -1,0 +1,91 @@
+---
+- name: 3. 연동 BGP Deactive
+  hosts: juniper
+  roles:
+  - Juniper.junos
+  connection: local
+  gather_facts: no
+
+  tasks:
+##################  Show BGP Summary  ##################
+
+  - name: 3. 연동 BGP Deactive
+    shell: cat ./opt/temp.xml
+
+  - name: Show BGP Summary
+    junos_cli:
+      host: 192.168.0.32
+      user: juniper
+      cli: show bgp summary
+      format: xml
+      dest: ./opt/3rd_bgp_deactive/get/show_bgp_summary.xml
+      logfile: ./opt/3rd_bgp_deactive/get/bgp_deactive.log
+  - name: Show BGP Summary
+    shell: cat ./opt/3rd_bgp_deactive/get/show_bgp_summary.xml
+    register: out
+  - name: Show BGP Summary
+    debug: var=out.stdout_lines
+
+   ################ Deactivate Bgp Neighbor #####################
+
+  - name: Deactivate Bgp Neighbor
+    junos_install_config: host=192.168.0.32 user=juniper port=22
+     diffs_file="./opt/3rd_bgp_deactive/get/bgp_deactivate.diff"
+     logfile="./opt/3rd_bgp_deactive/get/bgp_deactive.log"
+     file="./opt/3rd_bgp_deactive/set/deactivate_bgp_neighbor.xml"
+     replace=yes
+
+  - name: Deactivate Bgp Neighbor
+    shell: cat ./opt/3rd_bgp_deactive/get/bgp_deactivate.diff
+    register: out
+  - name: Diff
+    debug: var=out.stdout_lines
+
+  - name: COMMIT
+    tags: commit
+    junos_commit: host=192.168.0.32 user=juniper port=22
+     comment="commit of confirmation"
+     logfile="./opt/3rd_bgp_deactive/get/bgp_deactive.log"
+
+
+##################  Show BGP Summary  ##################
+
+  - name: Show BGP Summary
+    junos_cli:
+      host: 192.168.0.32
+      user: juniper
+      cli: show bgp summary
+      format: xml
+      dest: ./opt/3rd_bgp_deactive/get/show_bgp_summary.xml
+      logfile: ./opt/3rd_bgp_deactive/get/bgp_deactive.log
+  - name: Show BGP Summary
+    shell: cat ./opt/3rd_bgp_deactive/get/show_bgp_summary.xml
+    register: out
+  - name: Show BGP Summary
+    debug: var=out.stdout_lines
+
+ ###################### 계속 진행 or 롤백  #####################
+
+  - name: Confirm for continue to next step
+    pause: prompt="계속 진행 하시겠습니까? (y/n)"
+    register: yn
+
+  - name: Continue
+    debug: msg="다음 단계로 진행 하겠습니다"
+    when: yn.user_input == 'y'
+    run_once: true
+
+  - name: Rollback
+    junos_install_config: host=192.168.0.32 user=juniper port=22
+     file="./opt/1st_check/set/Backup_config.xml"
+     overwrite=yes
+    when: yn.user_input == 'n'
+
+  - name: COMMMIT
+    tags: commit
+    junos_commit: host=192.168.0.32 user=juniper port=22
+    when: yn.user_input == 'n'
+
+  - name: 원상복구가 되었으며 시나리오를 종료 합니다.
+    meta: end_play
+    when: yn.user_input == 'n'
